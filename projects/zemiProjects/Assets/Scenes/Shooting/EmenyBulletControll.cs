@@ -16,8 +16,9 @@ public class EmenyBulletControll : MonoBehaviour //敵がぶっ放してくる�
     // Update is called once per frame
     void Update()
     {
+      　//どんどん降ってくる
         transform.Translate(0, -fallspd, 0, Space.World);
-
+        //一番下に行ったらゲームオブジェクトから消滅させる
         if(transform.position.y < -5.5f){
             Destroy(gameObject);
         }
