@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 5313447839664816754}
   - component: {fileID: 5313447839664816755}
   - component: {fileID: 5313447839664816756}
+  - component: {fileID: 4024631970113457200}
   m_Layer: 0
-  m_Name: stEnemyBullet
+  m_Name: EnemybulletPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -94,3 +95,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c90c0d703cca40609e2cae4e423c3e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!58 &4024631970113457200
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5313447839664816757}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.13

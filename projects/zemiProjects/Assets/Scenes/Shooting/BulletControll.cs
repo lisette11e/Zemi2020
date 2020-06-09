@@ -4,19 +4,25 @@ using UnityEngine;
 
 public class BulletControll : MonoBehaviour //自機弾の操作
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+    public GameObject explosionPrefab;
+
+    void Start(){
+
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        transform.Translate (0, 0.1f, 0);
+    void Update () {
+  //　自機弾は上に上がってくる
+    transform.Translate (0, 0.2f, 0);
 
-		if (transform.position.y > 5) {
-			Destroy (gameObject);
-		}
+    if (transform.position.y > 5) {
+      Destroy (gameObject);
     }
+  }
+
+  void OnTriggerEnter2D(Collider2D coll) {
+  // あたったら消す
+  Destroy (coll.gameObject);
+  Destroy (gameObject);
+  }
+
 }
