@@ -7,7 +7,6 @@ public class BulletControll : MonoBehaviour //自機弾の操作
     public GameObject explosionPrefab;
 
     void Start(){
-
     }
 
     void Update () {
@@ -23,6 +22,9 @@ public class BulletControll : MonoBehaviour //自機弾の操作
   // あたったら消す
   Destroy (coll.gameObject);
   Destroy (gameObject);
+
+  //スコア更新 神谷制作・萩原debug0615
+  GameObject.Find("ScoreGUI").GetComponent<ScoreManager>().AddScore();
   }
 
 }
