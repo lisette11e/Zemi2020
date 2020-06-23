@@ -13,7 +13,7 @@ public class EmenyBulletControll : MonoBehaviour //敵がぶっ放してくる�
         this.stMychara = GameObject.Find("stMychara");
 
         //隕石が降ってくる速度をランダムで変えてやる
-        this.fallspd = 0.01f + 0.1f * Random.value;
+        this.fallspd = 0.01f + 0.02f * Random.value;
     }
 
     // Update is called once per frame
