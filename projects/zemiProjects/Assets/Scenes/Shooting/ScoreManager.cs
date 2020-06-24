@@ -26,4 +26,9 @@ public class ScoreManager : MonoBehaviour {
         CurrentScore += adScore;
         CurrentCombo ++;
       }
+
+      public void resetCombo(){
+        //被弾時コンボリセット＠萩原0624
+        CurrentCombo = 1;
+      }
 }

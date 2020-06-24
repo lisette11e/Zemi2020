@@ -45,6 +45,9 @@ public class EmenyBulletControll : MonoBehaviour //敵がぶっ放してくる�
             GameObject director = GameObject.Find("GameDirector");
             director.GetComponent<GameDirector>().DecreaseHp();
 
+            //コンボリセット
+              GameObject.Find("ScoreGUI").GetComponent<ScoreManager>().resetCombo();
+
             //マイキャラと衝突したら弾を消す
             Destroy(gameObject);
         }
