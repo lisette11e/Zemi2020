@@ -1,3 +1,7 @@
+/*　スコア管理
+ *　0623　スコアの計算方法変更＠萩原
+ */
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,6 +10,7 @@ using UnityEngine.UI;
 public class ScoreManager : MonoBehaviour {
 
     GameObject ScoreObject;
+    //スコア関連変数定義＠神谷0617
     int CurrentScore = 0;
     public int CurrentCombo = 1;
       void Start () {
@@ -17,6 +22,7 @@ public class ScoreManager : MonoBehaviour {
       }
 
       public void AddScore(int adScore){
+        //スコア加算＠神谷0617 萩原fix0623
         CurrentScore += adScore;
         CurrentCombo ++;
       }

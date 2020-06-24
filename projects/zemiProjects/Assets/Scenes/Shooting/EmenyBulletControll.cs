@@ -1,4 +1,8 @@
-﻿using System.Collections;
+/* 敵弾操作
+ * 0623　キャラと敵弾の当たり判定、HP処理追加＠神谷
+ */
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 

@@ -1,8 +1,11 @@
+/* 自機弾操作
+ * 0623 スコア計算処理追加＠萩原
+ */
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletControll : MonoBehaviour //自機弾の操作
+public class BulletControll : MonoBehaviour
 {
     public GameObject explosionPrefab;
 

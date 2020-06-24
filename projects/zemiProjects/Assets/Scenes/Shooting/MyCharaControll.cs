@@ -1,8 +1,10 @@
+/*　自機コントロール */
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MyCharaControll : MonoBehaviour //キー入力時のキャラの動き
+public class MyCharaControll : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -14,7 +16,6 @@ public class MyCharaControll : MonoBehaviour //キー入力時のキャラの動
     // Update is called once per frame
     void Update()
     {
-
 		if (Input.GetKey (KeyCode.LeftArrow)) {
 			transform.Translate (-0.01f, 0, 0);
 		}
