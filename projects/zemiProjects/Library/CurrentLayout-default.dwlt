@@ -564,9 +564,15 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
+<<<<<<< Updated upstream
     m_Target: {x: 565.4886, y: 2361.1235, z: -44.02737}
     speed: 2
     m_Value: {x: 522.44763, y: 2348.349, z: -41.22442}
+=======
+    m_Target: {x: 46.37817, y: 994.50586, z: -271.04562}
+    speed: 2
+    m_Value: {x: 46.37817, y: 994.50586, z: -271.04562}
+>>>>>>> Stashed changes
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -616,9 +622,15 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
+<<<<<<< Updated upstream
     m_Target: 651.15674
     speed: 2
     m_Value: 623.1165
+=======
+    m_Target: 1097.7664
+    speed: 2
+    m_Value: 1097.7664
+>>>>>>> Stashed changes
   m_Ortho:
     m_Target: 1
     speed: 2
