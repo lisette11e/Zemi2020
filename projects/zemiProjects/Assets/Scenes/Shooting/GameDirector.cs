@@ -26,7 +26,6 @@ public class GameDirector : MonoBehaviour
   //各種ステータス宣言
   public int AutoHealCount = 0;
   public int ManualHealCount = 0;
-
     GameObject hpGauge;
     void Start()
     {
@@ -44,15 +43,19 @@ public class GameDirector : MonoBehaviour
         Yuh.abilitycount = 0;
 
 
-
         //HPゲージ初期化
         this.hpGauge = GameObject.Find("hpGauge");
 
+
+
     }
 
-    //HP減少処理
+    //被弾処理
     public void DecreaseHp()
     {
+      //被弾時にコンボ値を変更できるようにする
+
         this.hpGauge.GetComponent<Image> ().fillAmount -= 0.05f;
-    }
+
+}
 }
