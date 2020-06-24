@@ -1,8 +1,9 @@
+/* 敵弾生成 */
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemybulletgen : MonoBehaviour //敵の弾を生成するもの　いつかいらなくなるかも
+public class Enemybulletgen : MonoBehaviour 
 {
     public GameObject EnemybulletPrefab;
 
@@ -16,7 +17,7 @@ public class Enemybulletgen : MonoBehaviour //敵の弾を生成するもの　�
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     void GenBullet(){
