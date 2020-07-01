@@ -1,5 +1,6 @@
 /* 自機弾操作
  * 0623 スコア計算処理追加＠萩原
+ * 0630 スコア処理修正＠萩原
  */
 using System.Collections;
 using System.Collections.Generic;
@@ -27,7 +28,7 @@ public class BulletControll : MonoBehaviour
   Destroy (coll.gameObject);
   Destroy (gameObject);
   int Combo = GameObject.Find("ScoreGUI").GetComponent<ScoreManager>().CurrentCombo;
-  double scrtmp = 1000 * Combo * 0.01;
+  double scrtmp = 1000 * (Combo + 1) * 0.01;
   int add = (int) scrtmp;
   GameObject.Find("ScoreGUI").GetComponent<ScoreManager>().AddScore(add);
   }
