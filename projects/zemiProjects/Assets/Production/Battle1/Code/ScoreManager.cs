@@ -34,8 +34,6 @@ public class ScoreManager : MonoBehaviour {
         CurrentScore += adScore;
         CurrentCombo ++;
       }
-<<<<<<< Updated upstream:projects/zemiProjects/Assets/Scenes/Shooting/ScoreManager.cs
-=======
 
       public void resetCombo(){
         CurrentCombo = 0;
