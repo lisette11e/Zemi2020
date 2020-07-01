@@ -38,5 +38,4 @@ public class ScoreManager : MonoBehaviour {
       public void resetCombo(){
         CurrentCombo = 0;
       }
->>>>>>> Stashed changes:projects/zemiProjects/Assets/Production/Battle1/Code/ScoreManager.cs
 }
