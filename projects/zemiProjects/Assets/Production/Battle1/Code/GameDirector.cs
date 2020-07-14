@@ -8,21 +8,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-//キャラステータス宣言
-public class Character{
-  public int Hp;
-  public int Attack;
-}
-
-public class Player : Character{
-  public int abilitycount;
-  public int Lv;
-}
-
-public class Enemy : Character{
-  public int eigenvalue; //敵倒したときの基礎値
-}
-
 
 
 public class GameDirector : MonoBehaviour
@@ -42,62 +27,60 @@ public class GameDirector : MonoBehaviour
   public int SwapLv;
   public int SwapAttack;
   public int Swapabilitycount;
+  public int LiliaHp;
+  public int LiliaLv;
+  public int LiliaAttack;
+  public int LiliaAbilityCount;
+  public int YuhHp;
+  public int YuhLv;
+  public int YuhAttack;
+  public int YuhAbilityCount;
+  public bool ToChange = false;
     GameObject hpGauge;
     void Start()
     {
         //リリア
-        Player Lilia = new Player();
-        Lilia.Hp = 500;
-        Lilia.Lv = 1;
-        Lilia.Attack = 120;
-        Lilia.abilitycount = 0;
+        LiliaHp = 500;
+        LiliaLv = 1;
+        LiliaAttack = 120;
+        LiliaAbilityCount = 0;
         //ユウ
-        Player Yuh = new Player();
-        Yuh.Hp = 400;
-        Yuh.Lv = 1;
-        Yuh.Attack = 100;
-        Yuh.abilitycount = 0;
+        YuhHp = 400;
+        YuhLv = 1;
+        YuhAttack = 100;
+        YuhAbilityCount = 0;
 
-        CurrentPlayerHp = Lilia.Hp;
-        CurrentPlayerLv = Lilia.Lv;
-        CurrentPlayerAttack = Lilia.Attack;
-        CurrentPlayerabilitycount = Lilia.abilitycount;
-        StandbyPlayerHp = Yuh.Hp;
-        StandbyPlayerLv = Yuh.Lv;
-        StandbyPlayerAttack = Yuh.Attack;
-        StandbyPlayerabilitycount = Yuh.abilitycount;
-
-
-        //最初はリリアが出撃するようにする（仕様変更あれば対応可）
+        CurrentPlayerHp = LiliaHp;
+        CurrentPlayerLv = LiliaLv;
+        CurrentPlayerAttack = LiliaAttack;
+        CurrentPlayerabilitycount = LiliaAbilityCount;
+        StandbyPlayerHp = YuhHp;
+        StandbyPlayerLv = YuhLv;
+        StandbyPlayerAttack = YuhAttack;
+        StandbyPlayerabilitycount = YuhAbilityCount;
 
 
-
-
+        /* 仮置です
         //敵・ざこいの（小）
-        Enemy EnemyMobSmall = new Enemy();
-        EnemyMobSmall.Hp = 100;
-        EnemyMobSmall.Attack = 50;
-        EnemyMobSmall.eigenvalue = 1000;
+        EnemyMobSmallHp = 100;
+        EnemyMobSmallAttack = 50;
+        EnemyMobSmallEigenvalue = 1000;
 
         //敵・ざこいの（大）
-        /*レベルが上がっていく形と思われるので、ひとまず最小値で設定してあります　以降の敵も同じです */
-        Enemy EnemyMobBig = new Enemy();
-        EnemyMobBig.Hp = 500;
-        EnemyMobBig.Attack = 100;
-        EnemyMobBig.eigenvalue = 1500;
+        EnemyMobBigHp = 500;
+        EnemyMobBigAttack = 100;
+        EnemyMobBigEigenvalue = 1500;
 
         //敵・中ボス
-        Enemy BossMiddle = new Enemy();
-        BossMiddle.Hp = 1000;
-        BossMiddle.Attack = 100;
-        BossMiddle.eigenvalue = 5000;
+        BossMiddleHp = 1000;
+        BossMiddleAttack = 100;
+        BossMiddleEigenvalue = 5000;
 
         //敵・大ボス
-        Enemy BossLarge = new Enemy();
-        BossLarge.Hp = 10000;
-        BossLarge.Attack = 200;
-        BossLarge.eigenvalue = 15000;
-
+        BossLargeHp = 10000;
+        BossLargeAttack = 200;
+        BossLargeEigenvalue = 15000;
+        */
 
         //HPゲージ初期化
         this.hpGauge = GameObject.Find("hpGauge");
@@ -107,11 +90,22 @@ public class GameDirector : MonoBehaviour
     }
 
     //被弾処理
-    public void DecreaseHp()
+    public void DecreaseHp(int enemyattack)
     {
       //被弾時にコンボ値を変更できるようにする
+      float currentHp = 0.0f;
+      float MaxHp = 0.0f;
+      float hpGaugeFill = 0.0f;
+      CurrentPlayerHp -= enemyattack;
+      currentHp = (float)CurrentPlayerHp;
+      if(ToChange == false){
+        MaxHp = LiliaHp;
+      }else{
+        MaxHp = YuhHp;
+      }
 
-        this.hpGauge.GetComponent<Image> ().fillAmount -= 0.05f;
+      hpGaugeFill =  currentHp / MaxHp;
+        this.hpGauge.GetComponent<Image> ().fillAmount = hpGaugeFill;
 
       }
 
