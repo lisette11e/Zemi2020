@@ -107,6 +107,8 @@ public class GameDirector : MonoBehaviour
       hpGaugeFill =  currentHp / MaxHp;
         this.hpGauge.GetComponent<Image> ().fillAmount = hpGaugeFill;
 
+        Debug.Log(currentHp);
+
       }
 
     //プレイヤー入れ替え
