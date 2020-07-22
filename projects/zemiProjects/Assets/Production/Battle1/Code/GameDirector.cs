@@ -36,7 +36,10 @@ public class GameDirector : MonoBehaviour
   public int YuhAttack;
   public int YuhAbilityCount;
   public bool ToChange = false;
-    GameObject hpGauge;
+  public float SPmoveTimer = 0.0f;
+  public float SPstandbyTimer = 0.0f;
+
+  GameObject hpGauge;
     void Start()
     {
         //リリア
@@ -128,4 +131,16 @@ public class GameDirector : MonoBehaviour
       StandbyPlayerAttack = SwapAttack;
       StandbyPlayerabilitycount = Swapabilitycount;
     }
-  }
+
+    //スペシャルムーブ発動
+    public void runSpecialMove(){
+      //10秒タイマー始動
+        while(SPmoveTimer == 10.0f){
+          SPstandbyTimer += Time.deltaTime;
+        }
+        //スタンバイ
+        while(SPstandbyTimer == 10.0f){
+          SPstandbyTimer += Time.deltaTime;
+        }
+      }
+    }

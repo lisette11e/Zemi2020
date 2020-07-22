@@ -27,7 +27,7 @@ public class ScoreManager : MonoBehaviour {
 
       void Update () {
         this.ScoreObject.GetComponent<Text>().text = CurrentScore.ToString("D6");
-        /* this.ComboDisp.GetComponent<Text>().text = CurrentCombo.ToString(); */
+        this.ComboDisp.GetComponent<Text>().text = CurrentCombo.ToString();
       }
 
       public void AddScore(int adScore){
