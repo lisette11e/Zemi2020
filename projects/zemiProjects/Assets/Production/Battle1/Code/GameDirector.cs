@@ -38,6 +38,7 @@ public class GameDirector : MonoBehaviour
   public bool ToChange = false;
   public float SPmoveTimer = 0.0f;
   public float SPstandbyTimer = 0.0f;
+  public bool ToSpecialAttack = false;
 
   GameObject hpGauge;
     void Start()
@@ -134,10 +135,12 @@ public class GameDirector : MonoBehaviour
 
     //スペシャルムーブ発動
     public void runSpecialMove(){
+      ToSpecialAttack = true;
       //10秒タイマー始動
         while(SPmoveTimer == 10.0f){
           SPstandbyTimer += Time.deltaTime;
         }
+        ToSpecialAttack = false;
         //スタンバイ
         while(SPstandbyTimer == 10.0f){
           SPstandbyTimer += Time.deltaTime;
