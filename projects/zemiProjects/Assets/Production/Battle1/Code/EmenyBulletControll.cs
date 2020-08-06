@@ -42,8 +42,7 @@ public class EmenyBulletControll : MonoBehaviour //敵がぶっ放してくる�
         if (d < r1 + r2)
         {
             //監督スクリプトにhpをへらしてもらう
-            GameObject director = GameObject.Find("GameDirector");
-            director.GetComponent<GameDirector>().DecreaseHp(10);
+            GameDirector.instance.DecreaseHp(10);
 
             //コンボリセット
               GameObject.Find("ScoreGUI").GetComponent<ScoreManager>().resetCombo();

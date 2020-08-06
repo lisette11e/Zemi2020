@@ -1379,7 +1379,7 @@ GameObject:
   - component: {fileID: 1021014111}
   m_Layer: 0
   m_Name: GameDirector
-  m_TagString: Untagged
+  m_TagString: GameDirector
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1419,6 +1419,9 @@ MonoBehaviour:
   YuhAttack: 0
   YuhAbilityCount: 0
   ToChange: 0
+  SPmoveTimer: 0
+  SPstandbyTimer: 0
+  ToSpecialAttack: 0
 --- !u!4 &1021014112
 Transform:
   m_ObjectHideFlags: 0
