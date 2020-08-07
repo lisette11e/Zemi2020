@@ -55,7 +55,7 @@ public class GameDirector : MonoBehaviour {
   public float SPmoveTimer = 0.0f;
   public float SPstandbyTimer = 0.0f;
   public bool ToSpecialAttack = false;
-
+  public float bgspeed = -0.05f;
   GameObject hpGauge;
   void Start () {
     //リリア

@@ -11,6 +11,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class ScoreManager : MonoBehaviour {
+  public static ScoreManager instance　 = null; //シングルトンのおまじない
 
     GameObject ScoreObject;
     GameObject ComboObject;
