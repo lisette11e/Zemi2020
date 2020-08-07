@@ -4,12 +4,7 @@ using UnityEngine;
 
 public class BackGround : MonoBehaviour
 {
-	float bgSpeed;
-	GameObject director;
-  	GameDirector gd;
-	void start(){
-    director = GameObject.Find("GameDirector");
-    gd = director.GetComponent<GameDirector>();		
+	void start(){	
 	}
 	void Update () {
 		

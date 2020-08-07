@@ -6,16 +6,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletControll : MonoBehaviour
-{
-    public GameObject explosionPrefab;
+public class BulletControll : MonoBehaviour {
+  public GameObject explosionPrefab;
 
-    void Start(){
+  void Start () {
 
-    }
+  }
 
-    void Update () {
-  //　自機弾は上に上がってくる
+  void Update () {
+    //　自機弾は上に上がってくる
     transform.Translate (0, 0.05f, 0);
 
     if (transform.position.y > 5) {
@@ -23,14 +22,14 @@ public class BulletControll : MonoBehaviour
     }
   }
 
-  void OnTriggerEnter2D(Collider2D coll) {
-  // あたったら消す
-  Destroy (coll.gameObject);
-  Destroy (gameObject);
-  int Combo = GameObject.Find("ScoreGUI").GetComponent<ScoreManager>().CurrentCombo;
-  double scrtmp = 1000 * (Combo + 1) * 0.01;
-  int add = (int) scrtmp;
-  GameObject.Find("ScoreGUI").GetComponent<ScoreManager>().AddScore(add);
+  void OnTriggerEnter2D (Collider2D coll) {
+    // あたったら消す
+    Destroy (coll.gameObject);
+    Destroy (gameObject);
+    int Combo = ScoreManager.instance.CurrentCombo;
+    double scrtmp = 1000 * (Combo + 1) * 0.01;
+    int add = (int) scrtmp;
+    ScoreManager.instance.AddScore (add);
   }
 
 }
