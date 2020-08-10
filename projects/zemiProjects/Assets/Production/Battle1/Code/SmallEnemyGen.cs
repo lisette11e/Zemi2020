@@ -43,7 +43,7 @@ public class SmallEnemyGen : MonoBehaviour //敵そのもの
 
         if (d < r1 + r2) {
             //監督スクリプトにhpをへらしてもらう
-            GameDirector.instance.DecreaseHp (50);
+            PlayerManager.instance.DecreaseHp (50);
 
             //コンボリセット
             ScoreManager.instance.resetCombo ();
