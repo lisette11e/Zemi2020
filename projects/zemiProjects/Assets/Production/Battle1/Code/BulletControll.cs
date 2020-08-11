@@ -23,11 +23,30 @@ public class BulletControll : MonoBehaviour {
   }
 
   void OnTriggerEnter2D (Collider2D coll) {
-    // あたったら消す
-    Destroy (coll.gameObject);
+    //接触したオブジェクトのHPをへらす
+    coll.gameObject.SendMessage("DecreaseHp");
     Destroy (gameObject);
     int Combo = ScoreManager.instance.CurrentCombo;
-    double scrtmp = 1000 * (Combo + 1) * 0.01;
+    int EigenValue;
+    //当たったオブジェクトを調べる（もうちょっと良いコードありそう）
+    switch (coll.gameObject.tag) {
+      case "SmallEnemyMob":
+        EigenValue = 1000;
+        break;
+      case "BigEnemyMob":
+        EigenValue = 1500;
+        break;
+      case "MediumBoss":
+        EigenValue = 5000;
+        break;
+      case "BigBoss":
+        EigenValue = 15000;
+        break;
+      default:
+        EigenValue = 500;
+        break;
+    }
+    double scrtmp = EigenValue * (Combo + 1) * 0.01;
     int add = (int) scrtmp;
     ScoreManager.instance.AddScore (add);
   }
