@@ -7,6 +7,7 @@ TagManager:
   - Enemy
   - Own
   - GameDirector
+  - SmallEnemyMob
   layers:
   - Default
   - TransparentFX
