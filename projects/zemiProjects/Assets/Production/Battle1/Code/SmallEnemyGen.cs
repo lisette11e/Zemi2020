@@ -52,4 +52,11 @@ public class SmallEnemyGen : MonoBehaviour //敵そのもの
             Destroy (gameObject);
         }
     }
+
+    //被弾処理
+    public void DecreaseHp () {
+        //被弾時にコンボ値を変更できるようにする
+        EnemyMobSmallHp -= PlayerManager.instance.CurrentPlayerAttack;
+
+    }
 }
