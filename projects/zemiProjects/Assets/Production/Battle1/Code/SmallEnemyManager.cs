@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SmallEnemyManager : MonoBehaviour{
+public class SmallEnemyManager : SingletonMonoBehaviour<SmallEnemyManager> {
     float fallspd; //落ちてくる速度を設定する子
 
     //敵ステータス宣言
@@ -38,10 +38,10 @@ public class SmallEnemyManager : MonoBehaviour{
 
         if (d < r1 + r2) {
             //監督スクリプトにhpをへらしてもらう
-            PlayerManager.instance.DecreaseHp (50);
+            PlayerManager.Instance.DecreaseHp (50);
 
             //コンボリセット
-            ScoreManager.instance.resetCombo ();
+            ScoreManager.Instance.resetCombo ();
 
             //マイキャラと衝突したら弾を消す
             Destroy (gameObject);
@@ -51,7 +51,11 @@ public class SmallEnemyManager : MonoBehaviour{
     //被弾処理
     public void DecreaseHp () {
         //被弾時にコンボ値を変更できるようにする
-        EnemyMobSmallHp -= PlayerManager.instance.CurrentPlayerAttack;
+        Debug.Log (PlayerManager.Instance.CurrentPlayerAttack);
+        EnemyMobSmallHp -= PlayerManager.Instance.CurrentPlayerAttack;
+        if (EnemyMobSmallHp <= 0) {
+            Destroy (gameObject);
+        }
 
     }
 }

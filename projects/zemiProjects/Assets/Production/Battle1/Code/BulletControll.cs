@@ -6,11 +6,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletControll : MonoBehaviour {
+public class BulletControll : SingletonMonoBehaviour<BulletControll> {
   public GameObject explosionPrefab;
-
+  public GameObject targetEnemy;
   void Start () {
-
   }
 
   void Update () {
@@ -22,16 +21,17 @@ public class BulletControll : MonoBehaviour {
     }
   }
 
-  void OnTriggerEnter2D (Collider2D coll) {
+  void OnTriggerEnter2D (Collider2D collision) {
     //接触したオブジェクトのHPをへらす
-    coll.gameObject.SendMessage("DecreaseHp");
+    targetEnemy = collision.gameObject;
     Destroy (gameObject);
-    int Combo = ScoreManager.instance.CurrentCombo;
+    int Combo = ScoreManager.Instance.CurrentCombo;
     int EigenValue;
     //当たったオブジェクトを調べる（もうちょっと良いコードありそう）
-    switch (coll.gameObject.tag) {
+    switch (collision.gameObject.tag) {
       case "SmallEnemyMob":
         EigenValue = 1000;
+        targetEnemy.GetComponent<SmallEnemyManager>().DecreaseHp();
         break;
       case "BigEnemyMob":
         EigenValue = 1500;
@@ -44,11 +44,12 @@ public class BulletControll : MonoBehaviour {
         break;
       default:
         EigenValue = 500;
+        Destroy(targetEnemy);
         break;
     }
     double scrtmp = EigenValue * (Combo + 1) * 0.01;
     int add = (int) scrtmp;
-    ScoreManager.instance.AddScore (add);
+    ScoreManager.Instance.AddScore (add);
   }
 
 }

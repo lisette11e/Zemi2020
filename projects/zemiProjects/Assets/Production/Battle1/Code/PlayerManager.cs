@@ -3,17 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerManager : MonoBehaviour {
-    public static PlayerManager instance　 = null; //シングルトンのおまじない
+public class PlayerManager : SingletonMonoBehaviour<PlayerManager>  {
 
-    void Awake () {
-        GameObject[] obj = GameObject.FindGameObjectsWithTag ("PlayerManager");
-        if (1 < obj.Length) {
-            Destroy (gameObject);
-        } else {
-            DontDestroyOnLoad (gameObject);
-        }
-    }
     //各種ステータス宣言
     public int AutoHealCount = 0;
     public int ManualHealCount = 0;

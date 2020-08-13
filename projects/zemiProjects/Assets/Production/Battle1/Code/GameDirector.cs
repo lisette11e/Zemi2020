@@ -17,17 +17,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GameDirector : MonoBehaviour {
-  public static GameDirector instance　 = null; //シングルトンのおまじない
+public class GameDirector : SingletonMonoBehaviour<GameDirector>  {
 
-  void Awake () {
-    GameObject[] obj = GameObject.FindGameObjectsWithTag ("GameDirector");
-    if (1 < obj.Length) {
-      Destroy (gameObject);
-    } else {
-      DontDestroyOnLoad (gameObject);
-    }
-  }
   //各種ステータス宣言
   public float SPmoveTimer = 0.0f;
   public float SPstandbyTimer = 0.0f;
