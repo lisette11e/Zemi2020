@@ -38,12 +38,12 @@ public class EmenyBulletControll : MonoBehaviour //敵がぶっ放してくる�
 
         if (d < r1 + r2) {
             //監督スクリプトにhpをへらしてもらう
-            PlayerManager.instance.DecreaseHp (10);
+            PlayerManager.Instance.DecreaseHp (10);
 
             //コンボリセット
-            ScoreManager.instance.resetCombo ();
+            ScoreManager.Instance.resetCombo ();
 
-            //マイキャラと衝突したら弾を消す
+            //マイキャラと衝突したら弾を消す F
             Destroy (gameObject);
         }
     }
