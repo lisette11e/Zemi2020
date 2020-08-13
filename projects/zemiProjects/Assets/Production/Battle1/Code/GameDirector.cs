@@ -24,6 +24,8 @@ public class GameDirector : SingletonMonoBehaviour<GameDirector>  {
   public float SPstandbyTimer = 0.0f;
   public bool ToSpecialAttack = false;
   public float bgspeed = -0.05f;
+    public int CurrentPhase = 1;
+
   GameObject hpGauge;
   void Start () {
 
@@ -53,10 +55,18 @@ public class GameDirector : SingletonMonoBehaviour<GameDirector>  {
     this.hpGauge = GameObject.Find ("hpGauge");
 
   }
+     void Update()
+    {
+        if(SmallEnemyManager.Instance.EnemyMobSmallDestroyCount >= 30)
+        {
+            SmallEnemyManager.Instance.EnemyMobSmallDestroyCount = 0;
+            transitionPhase();
+        }
 
+    }
 
-  //スペシャルムーブ発動
-  public void runSpecialMove () {
+    //スペシャルムーブ発動
+    public void runSpecialMove () {
     ToSpecialAttack = true;
     //10秒タイマー始動
     while (SPmoveTimer == 10.0f) {
@@ -69,5 +79,9 @@ public class GameDirector : SingletonMonoBehaviour<GameDirector>  {
     }
   }
 
+    public void transitionPhase()
+    {
+        CurrentPhase++;
+    }
   //スコア取得
 }

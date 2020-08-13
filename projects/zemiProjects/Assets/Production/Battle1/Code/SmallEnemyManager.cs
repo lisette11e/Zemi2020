@@ -9,6 +9,7 @@ public class SmallEnemyManager : SingletonMonoBehaviour<SmallEnemyManager> {
     public int EnemyMobSmallHp = 100;
     public int EnemyMobSmallAttack = 50;
     public int EnemyMobSmallEigenvalue = 1000;
+    public int EnemyMobSmallDestroyCount = 0;
 
     // Start is called before the first frame update
     GameObject stMychara;
@@ -55,6 +56,9 @@ public class SmallEnemyManager : SingletonMonoBehaviour<SmallEnemyManager> {
         EnemyMobSmallHp -= PlayerManager.Instance.CurrentPlayerAttack;
         if (EnemyMobSmallHp <= 0) {
             Destroy (gameObject);
+            EnemyMobSmallDestroyCount++;
+            //aiueo
+      
         }
 
     }
