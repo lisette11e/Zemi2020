@@ -8,6 +8,8 @@ TagManager:
   - Own
   - GameDirector
   - SmallEnemyMob
+  - PlayerManager
+  - ScoreManager
   layers:
   - Default
   - TransparentFX
