@@ -1,62 +1,27 @@
-/* 雑魚敵ジェネレーター
- * 0623　キャラと敵弾の当たり判定、HP処理追加＠神谷
- */
-
+﻿/* ザコ敵生成 */
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SmallEnemyGen : MonoBehaviour //敵そのもの
+public class SmallEnemyGen : MonoBehaviour 
 {
-    float fallspd; //落ちてくる速度を設定する子
-
-    //敵ステータス宣言
-    public int EnemyMobSmallHp = 100;
-    public int EnemyMobSmallAttack = 50;
-    public int EnemyMobSmallEigenvalue = 1000;
+    public GameObject SmallEnemyPrefab;
 
     // Start is called before the first frame update
-    GameObject stMychara;
-    void Start () { //マイキャラを探してもらう
-        this.stMychara = GameObject.Find ("stMychara");
-
-        //隕石が降ってくる速度をランダムで変えてやる
-        this.fallspd = 0.01f + 0.02f * Random.value;
+    void Start()
+    {
+        //1秒ごとに弾を生成する
+        InvokeRepeating ("EnemyGen", 1, 1);
     }
 
     // Update is called once per frame
-    void Update () {
-        //どんどん降ってくる
-        transform.Translate (0, -fallspd, 0, Space.World);
-        //一番下に行ったらゲームオブジェクトから消滅させる
-        if (transform.position.y < -5.5f) {
-            Destroy (gameObject);
-        }
+    void Update()
+    {
 
-        //キャラと敵の当たり判定
-        Vector2 p1 = transform.position;
-        Vector2 p2 = this.stMychara.transform.position;
-        Vector2 dir = p1 - p2;
-        float d = dir.magnitude;
-        float r1 = 0.2f;
-        float r2 = 0.4f;
-
-        if (d < r1 + r2) {
-            //監督スクリプトにhpをへらしてもらう
-            PlayerManager.instance.DecreaseHp (50);
-
-            //コンボリセット
-            ScoreManager.instance.resetCombo ();
-
-            //マイキャラと衝突したら弾を消す
-            Destroy (gameObject);
-        }
     }
 
-    //被弾処理
-    public void DecreaseHp () {
-        //被弾時にコンボ値を変更できるようにする
-        EnemyMobSmallHp -= PlayerManager.instance.CurrentPlayerAttack;
-
+    void EnemyGen(){
+        //x軸のランダムな位置に敵オブジェクトを生成させる
+        Instantiate (SmallEnemyPrefab, new Vector3 (-2.5f + 5 * Random.value, 6, 0), Quaternion.identity);
     }
 }
