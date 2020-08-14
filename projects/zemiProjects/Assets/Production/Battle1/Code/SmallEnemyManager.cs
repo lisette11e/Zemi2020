@@ -13,6 +13,7 @@ public class SmallEnemyManager : MonoBehaviour {
 
     // Start is called before the first frame update
     GameObject stMychara;
+    public GameObject explosionPrefab;
     void Start () { //マイキャラを探してもらう
         this.stMychara = GameObject.Find ("stMychara");
 
@@ -56,8 +57,9 @@ public class SmallEnemyManager : MonoBehaviour {
         EnemyMobSmallHp -= PlayerManager.Instance.CurrentPlayerAttack;
         if (EnemyMobSmallHp <= 0) {
             Destroy (gameObject);
+            Instantiate (explosionPrefab, transform.position, Quaternion.identity);
             GameDirector.Instance.EnemyMobSmallDestroyCount++;
-            Debug.Log(GameDirector.Instance.EnemyMobSmallDestroyCount);
+            Debug.Log (GameDirector.Instance.EnemyMobSmallDestroyCount);
         }
     }
 }
