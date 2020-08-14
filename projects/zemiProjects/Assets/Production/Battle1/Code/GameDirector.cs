@@ -17,14 +17,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GameDirector : SingletonMonoBehaviour<GameDirector>  {
+public class GameDirector : SingletonMonoBehaviour<GameDirector> {
 
   //各種ステータス宣言
   public float SPmoveTimer = 0.0f;
   public float SPstandbyTimer = 0.0f;
   public bool ToSpecialAttack = false;
   public float bgspeed = -0.05f;
+  public int CurrentPhase = 1;
   GameObject hpGauge;
+  public int EnemyMobSmallDestroyCount = 0;
+
   void Start () {
 
     /* 仮置です
@@ -53,7 +56,12 @@ public class GameDirector : SingletonMonoBehaviour<GameDirector>  {
     this.hpGauge = GameObject.Find ("hpGauge");
 
   }
-
+  void Update () {
+    if (EnemyMobSmallDestroyCount >= 30) {
+      EnemyMobSmallDestroyCount = 0;
+      TransitionPhase ();
+    }
+  }
 
   //スペシャルムーブ発動
   public void runSpecialMove () {
@@ -69,5 +77,8 @@ public class GameDirector : SingletonMonoBehaviour<GameDirector>  {
     }
   }
 
-  //スコア取得
+  public void TransitionPhase () {
+    CurrentPhase++;
+  }
+
 }

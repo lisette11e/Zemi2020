@@ -1,8 +1,9 @@
-﻿using System.Collections;
+﻿/*ザコ敵マネージャー */
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SmallEnemyManager : SingletonMonoBehaviour<SmallEnemyManager> {
+public class SmallEnemyManager : MonoBehaviour {
     float fallspd; //落ちてくる速度を設定する子
 
     //敵ステータス宣言
@@ -55,7 +56,8 @@ public class SmallEnemyManager : SingletonMonoBehaviour<SmallEnemyManager> {
         EnemyMobSmallHp -= PlayerManager.Instance.CurrentPlayerAttack;
         if (EnemyMobSmallHp <= 0) {
             Destroy (gameObject);
+            GameDirector.Instance.EnemyMobSmallDestroyCount++;
+            Debug.Log(GameDirector.Instance.EnemyMobSmallDestroyCount);
         }
-
     }
 }

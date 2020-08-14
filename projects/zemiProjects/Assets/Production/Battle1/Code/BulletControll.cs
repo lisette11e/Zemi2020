@@ -6,7 +6,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletControll : SingletonMonoBehaviour<BulletControll> {
+public class BulletControll : MonoBehaviour {
   public GameObject explosionPrefab;
   public GameObject targetEnemy;
   void Start () {
