@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/Scenes/shootingMain.unity
+- path: Assets/Production/Story1/Story1.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0
