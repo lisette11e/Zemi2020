@@ -10,6 +10,7 @@ TagManager:
   - SmallEnemyMob
   - PlayerManager
   - ScoreManager
+  - MediumEnemy
   layers:
   - Default
   - TransparentFX

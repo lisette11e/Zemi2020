@@ -25,9 +25,10 @@ public class GameDirector : SingletonMonoBehaviour<GameDirector> {
   public bool ToSpecialAttack = false;
   public float bgspeed = -0.05f;
   public int CurrentPhase = 1;
-  GameObject hpGauge;
   public int EnemyMobSmallDestroyCount = 0;
 
+  GameObject hpGauge;
+  public GameObject MediumEnemyPrefab;
   void Start () {
 
     /* 仮置です
@@ -57,7 +58,7 @@ public class GameDirector : SingletonMonoBehaviour<GameDirector> {
 
   }
   void Update () {
-    if (EnemyMobSmallDestroyCount >= 30) {
+    if (EnemyMobSmallDestroyCount >= 1) {
       EnemyMobSmallDestroyCount = 0;
       TransitionPhase ();
     }
@@ -79,6 +80,9 @@ public class GameDirector : SingletonMonoBehaviour<GameDirector> {
 
   public void TransitionPhase () {
     CurrentPhase++;
+    if (CurrentPhase == 2) {
+      Instantiate (MediumEnemyPrefab, new Vector3 (0.0f, 3.0f, 0.0f), Quaternion.identity);
+    }
   }
 
 }

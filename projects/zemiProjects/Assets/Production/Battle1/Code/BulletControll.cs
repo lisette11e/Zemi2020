@@ -34,6 +34,7 @@ public class BulletControll : MonoBehaviour {
         break;
       case "BigEnemyMob":
         EigenValue = 1500;
+        targetEnemy.GetComponent<MediumEnemyManager> ().DecreaseHp ();
         break;
       case "MediumBoss":
         EigenValue = 5000;

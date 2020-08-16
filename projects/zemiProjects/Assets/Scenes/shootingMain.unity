@@ -121,6 +121,59 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &38394077
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 38394079}
+  - component: {fileID: 38394078}
+  m_Layer: 0
+  m_Name: MediumEnemyManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &38394078
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 38394077}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 736cea233583f47fca91d32edd2f1f2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EnemyMobMediumHp: 1000
+  EnemyMobMediumAttack: 100
+  EnemyMobMediumEigenvalue: 5000
+  EnemyBullet: {fileID: 1757522377945679833, guid: 3d9d8d6731e664e53a4e5a0b27a68eea,
+    type: 3}
+  explosionPrefab: {fileID: 139366, guid: b185c1a9cf067374586d095111b15bd1, type: 3}
+  targetTime: 1
+  currentTime: 0
+  deg: 0
+  isMake: 0
+--- !u!4 &38394079
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 38394077}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.667275, y: -0.9887023, z: -3.2497706}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &186428965
 GameObject:
   m_ObjectHideFlags: 0
@@ -1264,6 +1317,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SmallEnemyPrefab: {fileID: 1649671174621629897, guid: 6874e52b12f212e41a4496f876117507,
     type: 3}
+  timer: 1
 --- !u!1 &994470801
 GameObject:
   m_ObjectHideFlags: 0
@@ -1444,6 +1498,10 @@ MonoBehaviour:
   SPstandbyTimer: 0
   ToSpecialAttack: 0
   bgspeed: -0.05
+  CurrentPhase: 1
+  EnemyMobSmallDestroyCount: 0
+  MediumEnemyPrefab: {fileID: 3386526047069856026, guid: 768077501f0863a438c2d43940ed8b0a,
+    type: 3}
 --- !u!4 &1021014112
 Transform:
   m_ObjectHideFlags: 0
@@ -1667,7 +1725,7 @@ GameObject:
   - component: {fileID: 1386333872}
   - component: {fileID: 1386333871}
   m_Layer: 0
-  m_Name: Main Camera
+  m_Name: MainCamera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
