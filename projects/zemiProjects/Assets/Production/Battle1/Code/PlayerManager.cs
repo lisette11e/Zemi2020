@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerManager : SingletonMonoBehaviour<PlayerManager>  {
+public class PlayerManager : SingletonMonoBehaviour<PlayerManager> {
 
     //各種ステータス宣言
     public int AutoHealCount = 0;

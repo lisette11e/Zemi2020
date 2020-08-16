@@ -9,8 +9,7 @@ using UnityEngine;
 public class BulletControll : MonoBehaviour {
   public GameObject explosionPrefab;
   public GameObject targetEnemy;
-  void Start () {
-  }
+  void Start () { }
 
   void Update () {
     //　自機弾は上に上がってくる
@@ -31,7 +30,7 @@ public class BulletControll : MonoBehaviour {
     switch (collision.gameObject.tag) {
       case "SmallEnemyMob":
         EigenValue = 1000;
-        targetEnemy.GetComponent<SmallEnemyManager>().DecreaseHp();
+        targetEnemy.GetComponent<SmallEnemyManager> ().DecreaseHp ();
         break;
       case "BigEnemyMob":
         EigenValue = 1500;
@@ -44,7 +43,7 @@ public class BulletControll : MonoBehaviour {
         break;
       default:
         EigenValue = 500;
-        Destroy(targetEnemy);
+        Destroy (targetEnemy);
         break;
     }
     double scrtmp = EigenValue * (Combo + 1) * 0.01;
