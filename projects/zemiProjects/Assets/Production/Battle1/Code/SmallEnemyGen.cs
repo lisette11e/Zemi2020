@@ -20,10 +20,10 @@ public class SmallEnemyGen : MonoBehaviour {
             // カウンタ
             timer -= Time.deltaTime;
             if (timer < 0) {
-                    // 敵を出現させる
-                    Instantiate (SmallEnemyPrefab, new Vector3 (-2.5f + 5 * Random.value, 6, 0), Quaternion.identity);
-                    // タイマーのリセット
-                    timer = 1.0f;
+                // 敵を出現させる
+                Instantiate (SmallEnemyPrefab, new Vector3 (-2.5f + 5 * Random.value, 6, 0), Quaternion.identity);
+                // タイマーのリセット
+                timer = 1.0f;
             }
         }
     }
