@@ -17,10 +17,11 @@ public class MediumEnemyManager : MonoBehaviour {
     public GameObject explosionPrefab;
 
     //弾発射用のもの
-    public float targetTime = 1.0f;
+    public float targetTime = 3.0f;
     public float currentTime = 0;
     public float deg = 0;
     public bool isMake = false;
+    public List<MediumEnemyBulletControll> list = new List<MediumEnemyBulletControll> ();
 
     // Start is called before the first frame update
 
@@ -49,8 +50,8 @@ public class MediumEnemyManager : MonoBehaviour {
         }
         if (GameDirector.Instance.CurrentPhase == 2) {
             currentTime += Time.deltaTime;
-            Debug.Log (currentTime);
             if (targetTime < currentTime) {
+                deg = 0;
                 isMake = false;
                 shotBullet ();
             };
@@ -71,25 +72,30 @@ public class MediumEnemyManager : MonoBehaviour {
     }
 
     public void shotBullet () {
-        float hankei = 0.05f; //弾オブジェクトを配置する円の半径
+        Debug.Log (deg);
+        float hankei = 2f; //弾オブジェクトを配置する円の半径
         float BulletInterval = 30f; //弾を生成する角度
         currentTime = 0;　 //タイマーを初期化
-        if (!isMake) {
-            //角度からラジアン生成
+        while (deg <= 360 - BulletInterval) {
+            //ラジアン生成
             var rad = deg * Mathf.Deg2Rad;
-            //ラジアンを用いて、sinとcosを求める
+            //ラジアンを用いて、sinθとcosθを求める
             var sin = Mathf.Sin (rad);
             var cos = Mathf.Cos (rad);
-            //弾オブジェクトを配置する座標を生成
+            //弾オブジェクトを配置する座標を求める
             var pos = this.gameObject.transform.position + new Vector3 (cos * hankei, sin * hankei, 0);
-            //弾の作成
+            //弾prefabを生成する
             var bullet = Instantiate (EnemyBullet);
             //求めた円周上の座標に置く
             bullet.transform.position = pos;
+            //発射準備
+            var bulletScript = bullet.GetComponent<MediumEnemyBulletControll> ();
+            list.Add (bulletScript);
             //次の角度へ
             deg += BulletInterval;
-            //次の計算結果が、360度よりも大きくなったら弾を作らないようにする
-            if (deg > 360 - BulletInterval) isMake = true;
+        }
+        foreach (var bullet in list) {
+            bullet.shot ();
         }
     }
 }
