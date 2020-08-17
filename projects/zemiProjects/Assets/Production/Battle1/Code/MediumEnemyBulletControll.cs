@@ -11,17 +11,13 @@ public class MediumEnemyBulletControll : MonoBehaviour {
 
     void Start () {
         MyPos = this.gameObject.transform.position;
-        charaPos = GameObject.FindGameObjectWithTag("MediumEnemy").transform.position;
+        charaPos = GameObject.FindGameObjectWithTag ("MediumEnemy").transform.position;
         bulletVector = new Vector2 (MyPos.x - charaPos.x, MyPos.y - charaPos.y);
         targetRenderer = GetComponent<Renderer> ();
         this.stMychara = GameObject.Find ("stMychara");
     }
 
     void Update () {
-        this.transform.Translate (bulletVector.x / 10000f, bulletVector.y / 10000f, 0, Space.World);
-        if (targetRenderer.isVisible) {
-            Destroy (gameObject);
-        }
 
         //キャラと敵弾の当たり判定
         Vector2 p1 = transform.position;
@@ -41,6 +37,10 @@ public class MediumEnemyBulletControll : MonoBehaviour {
             //マイキャラと衝突したら弾を消す 
             Destroy (gameObject);
         }
+    }
+
+    public void shot () {
+        this.gameObject.GetComponent<Rigidbody2D> ().velocity = new Vector2 (MyPos.x - charaPos.x, MyPos.y - charaPos.y);
     }
 
 }
