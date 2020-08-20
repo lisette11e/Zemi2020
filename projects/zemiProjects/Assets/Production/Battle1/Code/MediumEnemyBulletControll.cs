@@ -5,6 +5,7 @@ using UnityEngine;
 public class MediumEnemyBulletControll : MonoBehaviour {
     public Vector2 MyPos;
     public Vector2 bulletVector;
+    public Vector3 velocity;
     Renderer targetRenderer;
     GameObject stMychara;
     float fallspd; //落ちてくる速度を設定する子
@@ -25,11 +26,9 @@ public class MediumEnemyBulletControll : MonoBehaviour {
     }
 
     void Update () {
-        transform.Translate (0, -fallspd, 0, Space.World);
-        //一番下に行ったらゲームオブジェクトから消滅させる
-        if (transform.position.y < -5.5f) {
-            Destroy (gameObject);
-        }
+        //VelocitySettingで取得したVelocityをUpdate`関数で動かす
+        transform.Translate (velocity, Space.World);
+
         //キャラと敵弾の当たり判定
         Vector2 p1 = transform.position;
         Vector2 p2 = this.stMychara.transform.position;
@@ -45,11 +44,20 @@ public class MediumEnemyBulletControll : MonoBehaviour {
             //コンボリセット
             ScoreManager.Instance.resetCombo ();
         }
+
+        if (!GetComponent<Renderer> ().isVisible) {
+            Destroy (this.gameObject);
+        }
     }
 
-    public void shot () {
-        this.gameObject.GetComponent<Rigidbody2D> ().velocity = new Vector2 (MyPos.x - charaPos.x, MyPos.y - charaPos.y);
-
+    public void SetVelocity (Vector2 tmpvel) {
+        velocity = tmpvel;
     }
 
+    public Vector2 VelocitySetting (float direction, float speed) {
+        Vector2 V;
+        V.x = Mathf.Cos (Mathf.Deg2Rad * direction) * speed;
+        V.y = Mathf.Sin (Mathf.Deg2Rad * direction) * speed;
+        return V;
+    }
 }

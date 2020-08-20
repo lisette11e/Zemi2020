@@ -21,7 +21,7 @@ public class MediumEnemyManager : MonoBehaviour {
     public float currentTime = 0;
     public float deg = 0;
     public bool isMake = false;
-    public List<MediumEnemyBulletGen> list = new List<MediumEnemyBulletGen> ();
+    public List<MediumEnemyBulletControll> list = new List<MediumEnemyBulletControll> ();
 
     // Start is called before the first frame update
 
@@ -71,54 +71,34 @@ public class MediumEnemyManager : MonoBehaviour {
             ScoreManager.Instance.AddScore (5000);
         }
     }
-    public void shotBullet () {
-        int shotnum;
-        int shotcnt;
-        shotnum = Random.Range (1, 8);
-        shotcnt = 0;
-        while (shotnum > shotcnt) {
-            // 弾を生成させる
-            Instantiate (EnemyBullet, new Vector3 (-2.5f + 5 * Random.value, 6, 0), Quaternion.identity);
-            shotcnt++;
+
+    /**********
+    ランダム生成したときのアーカイブ。
+
+        public void shotBullet () {
+            int shotnum;
+            int shotcnt;
+            shotnum = Random.Range (1, 8);
+            shotcnt = 0;
+            while (shotnum > shotcnt) {
+                // 弾を生成させる
+                Instantiate (EnemyBullet, new Vector3 (-2.5f + 5 * Random.value, 6, 0), Quaternion.identity);
+                shotcnt++;
+            }
+            // タイマーのリセット
+            currentTime = 0f;
         }
-        // タイマーのリセット
-        currentTime = 0f;
+    }
+    **********/
+    public void shotBullet () {
+        Debug.Log (deg);
+        float hankei = 2f; //弾オブジェクトを配置する円の半径
+        float BulletInterval = 30f; //弾を生成する角度
+        currentTime = 0;　 //タイマーを初期化
+        while (deg <= 360 - BulletInterval) {
+            GameObject clone = (GameObject) Instantiate (EnemyBullet, transform.position, Quaternion.identity);
+            clone.GetComponent<MediumEnemyBulletControll> ().SetVelocity ((clone.GetComponent<MediumEnemyBulletControll> ().VelocitySetting (deg, 3) / 300));
+            deg += BulletInterval;
+        }
     }
 }
-
-/**********
-放射状に飛んでいかない理由がようわからんので、一旦コメントアウトします。
-ランダム攻撃に切り替えます。 0818萩原
-以下、書いてあったコードです。
-
-   public void shotBullet(){
-    Debug.Log (deg);
-    float hankei = 2f; //弾オブジェクトを配置する円の半径
-    float BulletInterval = 30f; //弾を生成する角度
-    currentTime = 0;　 //タイマーを初期化
-    while (deg <= 360 - BulletInterval) {
-        //ラジアン生成
-        var rad = deg * Mathf.Deg2Rad;
-        //ラジアンを用いて、sinθとcosθを求める
-        var sin = Mathf.Sin (rad);
-        var cos = Mathf.Cos (rad);
-        //弾オブジェクトを配置する座標を求める
-        var pos = this.gameObject.transform.position + new Vector3 (cos * hankei, sin * hankei, 0);
-        //弾prefabを生成する
-        var bullet = Instantiate (EnemyBullet);
-        //求めた円周上の座標に置く
-        bullet.transform.position = pos;
-        //発射準備
-        var bulletScript = bullet.GetComponent<MediumEnemyBulletGen> ();
-        list.Add (bulletScript);
-        bulletScript.CharaPos = this.gameObject.transform.position;
-        //次の角度へ
-        deg += BulletInterval;
-    }
-    foreach (var bullet in list) {
-        Debug.Log ("run shot");
-        bullet.shot ();
-    }
-}
-
-**********/
