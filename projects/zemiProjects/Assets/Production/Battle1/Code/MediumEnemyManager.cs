@@ -41,7 +41,7 @@ public class MediumEnemyManager : MonoBehaviour {
         float r2 = 0.4f;
         if (d < r1 + r2) {
             //監督スクリプトにhpをへらしてもらう
-            PlayerManager.Instance.DecreaseHp (25);
+            PlayerManager.Instance.DecreaseHp (EnemyMobMediumAttack);
 
             //コンボリセット
             ScoreManager.Instance.resetCombo ();
@@ -62,13 +62,16 @@ public class MediumEnemyManager : MonoBehaviour {
 
     //被弾処理
     public void DecreaseHp () {
+        int Combo = ScoreManager.Instance.CurrentCombo;
         //被弾時にコンボ値を変更できるようにする
         Debug.Log (PlayerManager.Instance.CurrentPlayerAttack);
         EnemyMobMediumHp -= PlayerManager.Instance.CurrentPlayerAttack;
         if (EnemyMobMediumHp <= 0) {
             Destroy (gameObject);
             Instantiate (explosionPrefab, transform.position, Quaternion.identity);
-            ScoreManager.Instance.AddScore (5000);
+            double scrtmp = 5000 * (Combo + 1) * 0.01;
+            int add = (int) scrtmp;
+            ScoreManager.Instance.AddScore (add);
         }
     }
 
