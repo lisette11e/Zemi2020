@@ -40,7 +40,7 @@ public class SmallEnemyManager : MonoBehaviour {
 
         if (d < r1 + r2) {
             //監督スクリプトにhpをへらしてもらう
-            PlayerManager.Instance.DecreaseHp (50);
+            PlayerManager.Instance.DecreaseHp (EnemyMobSmallAttack);
 
             //コンボリセット
             ScoreManager.Instance.resetCombo ();
@@ -52,6 +52,7 @@ public class SmallEnemyManager : MonoBehaviour {
 
     //被弾処理
     public void DecreaseHp () {
+        int Combo = ScoreManager.Instance.CurrentCombo;
         //被弾時にコンボ値を変更できるようにする
         Debug.Log (PlayerManager.Instance.CurrentPlayerAttack);
         EnemyMobSmallHp -= PlayerManager.Instance.CurrentPlayerAttack;
@@ -59,7 +60,9 @@ public class SmallEnemyManager : MonoBehaviour {
             Destroy (gameObject);
             Instantiate (explosionPrefab, transform.position, Quaternion.identity);
             GameDirector.Instance.EnemyMobSmallDestroyCount++;
-            Debug.Log (GameDirector.Instance.EnemyMobSmallDestroyCount);
+            double scrtmp = 1000 * (Combo + 1) * 0.01;
+            int add = (int) scrtmp;
+            ScoreManager.Instance.AddScore (add);
         }
     }
 }

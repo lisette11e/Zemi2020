@@ -29,25 +29,20 @@ public class BulletControll : MonoBehaviour {
     //当たったオブジェクトを調べる（もうちょっと良いコードありそう）
     switch (collision.gameObject.tag) {
       case "SmallEnemyMob":
-        EigenValue = 1000;
         targetEnemy.GetComponent<SmallEnemyManager> ().DecreaseHp ();
         break;
       case "BigEnemyMob":
-        EigenValue = 1500;
+        break;
+      case "MediumEnemy":
         targetEnemy.GetComponent<MediumEnemyManager> ().DecreaseHp ();
         break;
-      case "MediumBoss":
-        EigenValue = 5000;
-        break;
       case "BigBoss":
-        EigenValue = 15000;
         break;
       default:
-        EigenValue = 500;
         Destroy (targetEnemy);
         break;
     }
-    double scrtmp = EigenValue * (Combo + 1) * 0.01;
+    double scrtmp = 100 * (Combo + 1) * 0.01;
     int add = (int) scrtmp;
     ScoreManager.Instance.AddScore (add);
   }
