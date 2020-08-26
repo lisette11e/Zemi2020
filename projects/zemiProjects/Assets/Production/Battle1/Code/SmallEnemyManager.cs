@@ -65,4 +65,14 @@ public class SmallEnemyManager : MonoBehaviour {
             ScoreManager.Instance.AddScore (add);
         }
     }
+    //必殺モード発動時用
+    public void SpecialMoveDestroy () {
+        int Combo = ScoreManager.Instance.CurrentCombo;
+        Destroy (gameObject);
+        Instantiate (explosionPrefab, transform.position, Quaternion.identity);
+        GameDirector.Instance.EnemyMobSmallDestroyCount++;
+        double scrtmp = 1000 * (Combo + 1) * 0.01;
+        int add = (int) scrtmp;
+        ScoreManager.Instance.AddScore (add);
+    }
 }

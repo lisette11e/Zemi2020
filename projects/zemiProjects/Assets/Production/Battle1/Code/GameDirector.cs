@@ -2,6 +2,7 @@
  * 0624 キャラステータス追加＠萩原
  * 0701 敵キャラステータス追加＠萩原
  * 0806 シングルトン設計＠萩原
+ * 0826 必殺モード＠萩原
  */
 
 /*****
@@ -66,7 +67,15 @@ public class GameDirector : SingletonMonoBehaviour<GameDirector> {
 
   //スペシャルムーブ発動
   public void runSpecialMove () {
+    //フラグスタンバイ
     ToSpecialAttack = true;
+    
+    //=====モブ敵を全部ぶちのめす=====
+    GameObject[] mobs = GameObject.FindGameObjectsWithTag ("SmallEnemyMob");
+    foreach (GameObject mob in mobs) {
+      mob.GetComponent<SmallEnemyManager> ().SpecialMoveDestroy ();
+    }
+
     //10秒タイマー始動
     while (SPmoveTimer == 10.0f) {
       SPstandbyTimer += Time.deltaTime;
