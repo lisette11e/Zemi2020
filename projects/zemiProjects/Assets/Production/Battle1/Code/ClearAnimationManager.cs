@@ -1,11 +1,12 @@
-﻿using System.Collections;
+﻿/* ClearAnimationを作る
+ */
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 using UnityEngine.UI; //追加しました
 
-public class ClearAnimationManager : MonoBehaviour
-{
+public class ClearAnimationManager : SingletonMonoBehaviour<ScoreManager>{
 
     public GameObject clear_object = null;//Textオブジェクト
 
