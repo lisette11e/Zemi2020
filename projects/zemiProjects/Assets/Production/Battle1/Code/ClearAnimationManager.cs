@@ -21,6 +21,6 @@ public class ClearAnimationManager : SingletonMonoBehaviour<ScoreManager>{
     {
         Text clear_text = clear_object.GetComponent<Text>();
 
-        clear_text.text = "000000";
+        clear_text.text = "STAGE CLEAR";
     }
 }

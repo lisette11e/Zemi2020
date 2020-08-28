@@ -1181,7 +1181,7 @@ GameObject:
   - component: {fileID: 889056777}
   - component: {fileID: 889056776}
   m_Layer: 5
-  m_Name: ClearAnimation
+  m_Name: clear_object
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1208,7 +1208,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 60
+    m_FontSize: 40
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -1219,7 +1219,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u3042\u3044\u3046Text"
+  m_Text: "\u3042\u3044\u3046\u3048Text"
 --- !u!222 &889056777
 CanvasRenderer:
   m_ObjectHideFlags: 0
