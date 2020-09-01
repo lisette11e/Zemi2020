@@ -620,6 +620,7 @@ GameObject:
   m_Component:
   - component: {fileID: 377422191}
   - component: {fileID: 377422192}
+  - component: {fileID: 377422193}
   m_Layer: 0
   m_Name: Skill_Lillia
   m_TagString: Untagged
@@ -691,6 +692,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &377422193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 377422190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcb21db85862d524081df158e2d6f1b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lilia: {fileID: 0}
+  LiliaSpMob: {fileID: 1986657429410349326, guid: 4c7083488f00cf6429b4507cc572e455,
+    type: 3}
+  liliapos: {fileID: 0}
 --- !u!1 &420733578
 GameObject:
   m_ObjectHideFlags: 0
@@ -2637,6 +2654,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dac23367781ad458f8786fb7d51759a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sound1: {fileID: 0}
   bulletPrefab: {fileID: 1757522377945679833, guid: 3d9d8d6731e664e53a4e5a0b27a68eea,
     type: 3}
 --- !u!212 &1709318191
