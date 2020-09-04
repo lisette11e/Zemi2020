@@ -9,13 +9,29 @@ using UnityEngine;
 public class BulletControll : MonoBehaviour {
   public GameObject explosionPrefab;
   public GameObject targetEnemy;
-  void Start () { }
+  Renderer targetRenderer;
+
+  //ホーミング用
+  public float diffusionAngle = 0.5f;
+  public float bulletSpeed = 0.05f;
+  public float directionx; //x軸方向にどれだけ進むか
+  public float directiony; //y軸方向にどれだけ進むか
+
+  void Start () {
+    targetRenderer = GetComponent<Renderer> ();
+    directionx = Random.value;
+    directiony = Random.value;
+  }
 
   void Update () {
-    //　自機弾は上に上がってくる
-    transform.Translate (0, 0.05f, 0);
+    //　自機弾の発射方向
+    if (PlayerManager.Instance.ToChange == false) {
+      transform.Translate (0, 0.05f, 0);
+    } else {
+      transform.Translate (directionx, directiony, 0);
+    }
 
-    if (transform.position.y > 5) {
+    if (!GetComponent<Renderer> ().isVisible) {
       Destroy (gameObject);
     }
   }

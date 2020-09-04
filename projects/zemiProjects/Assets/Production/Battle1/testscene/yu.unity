@@ -613,8 +613,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0d1824099f504865b46e3ec0c397121, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  score_object: {fileID: 953719800}
-  score_num: 1
+  CurrentCombo: 0
 --- !u!4 &1481121793
 Transform:
   m_ObjectHideFlags: 0
@@ -659,6 +658,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dac23367781ad458f8786fb7d51759a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sound1: {fileID: 0}
   bulletPrefab: {fileID: 1757522377945679833, guid: 3d9d8d6731e664e53a4e5a0b27a68eea,
     type: 3}
 --- !u!212 &1709318191
