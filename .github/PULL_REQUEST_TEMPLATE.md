@@ -4,8 +4,10 @@
 
 # 定例報告用
 毎週火曜日の定例報告用です。
-labelsに「PR: 定例報告用」を指定し、
-assigneesに、テク班の人全員を指定してください。
+labelsに「PR: 定例報告用」を指定
+Reviewersにテク班の人全員を指定
+Assigneesに自分の名前を指定
+※次の火曜日にクローズします
 
 ----ここから使ってください
 ## 対応issue
@@ -23,8 +25,10 @@ assigneesに、テク班の人全員を指定してください。
 
 # bugfix
 バグを治した時のやつです。
-labelsに「PR: bugfix」を指定し、
-assigneesに「lisette11e」と、バグっていたPRを作った人を指定してください。
+labelsに「PR: bugfix」を指定
+Reviewersに「lisette11e」と、バグっていたPRを作った人を指定
+Assigneesに自分の名前を指定
+※萩原とPR作った人のレビュー後にクローズします
 
 ----ここから使ってください
 ## 対応issue
@@ -42,8 +46,10 @@ assigneesに「lisette11e」と、バグっていたPRを作った人を指定�
 
 # タスク完了用
 一連の処理が完了したときのプルリクエストです。
-labelsに「PR: complete」を指定し、
-assigneesに「lisette11e」を指定してください。
+labelsに「PR: complete」を指定
+Reviewersに「lisette11e」を指定
+Assigneesに自分の名前を指定
+※萩原レビュー後クローズします
 
 ----ここから使ってください
 ## 対応issue
@@ -55,8 +61,10 @@ assigneesに「lisette11e」を指定してください。
 
 # 萩原ヘルプ用
 萩原にヘルプを求めることができるプルリクエストです。原則最優先で対応します。
-labelsに「PR: 萩原ヘルプ用」を指定し、
-assigneesに「lisette11e」を指定してください。
+labelsに「PR: 萩原ヘルプ用」を指定
+Reviewersに「lisette11e」を指定
+Assigneesに自分の名前を指定
+※問題解決後、PRを送った人がクローズしてください
 
 ----ここから使ってください
 ## 対応issue
