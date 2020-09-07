@@ -10,15 +10,17 @@ public class ClearManager : MonoBehaviour
     void Start()
     {
         anim = this.gameObject.GetComponent<TypefaceAnimator>();
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetMouseButtonDown(0))
-
+        // Update is called once per frame
+        void Update()
         {
-            anim.Play();
+            Debug.Log(MediumEnemyManager.Instance.EnemyMobMediumHp);
+            if(MediumEnemyManager.Instance.EnemyMobMediumHp <= 0)
+            {
+                anim.Play();
+            }
+
+
         }
     }
 }
