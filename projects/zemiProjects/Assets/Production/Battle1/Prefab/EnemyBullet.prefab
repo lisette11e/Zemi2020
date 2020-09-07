@@ -98,7 +98,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MyPos: {x: 0, y: 0}
   bulletVector: {x: 0, y: 0}
-  charaPos: {x: 0, y: 0}
+  velocity: {x: 0, y: 0, z: 0}
 --- !u!58 &-2981318266823336491
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -123,7 +123,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1989863512633935}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
