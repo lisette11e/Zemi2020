@@ -29,6 +29,7 @@ public class PlayerManager : SingletonMonoBehaviour<PlayerManager> {
     public int YuhAttack;
     public int YuhAbilityCount;
     public bool ToChange = false;
+    public bool isYuhAbilityTriggered = false;
     GameObject hpGauge;
 
     // Start is called before the first frame update

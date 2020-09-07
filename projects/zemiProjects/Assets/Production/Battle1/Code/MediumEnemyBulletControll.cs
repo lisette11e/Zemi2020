@@ -9,7 +9,8 @@ public class MediumEnemyBulletControll : MonoBehaviour {
     Renderer targetRenderer;
     GameObject stMychara;
     float fallspd; //落ちてくる速度を設定する子
-
+    bool isTrigger = false;
+    public GameObject targetEnemy;
     //敵座標
     private Vector2 charaPos;
     public Vector2 CharaPos {
@@ -27,26 +28,15 @@ public class MediumEnemyBulletControll : MonoBehaviour {
 
     void Update () {
         //VelocitySettingで取得したVelocityをUpdate`関数で動かす
-        transform.Translate (velocity, Space.World);
+        if (isTrigger == true) {
+            transform.Translate (velocity * -1, Space.World);
+        } else {
 
-        //キャラと敵弾の当たり判定
-        Vector2 p1 = transform.position;
-        Vector2 p2 = this.stMychara.transform.position;
-        Vector2 dir = p1 - p2;
-        float d = dir.magnitude;
-        float r1 = 0.2f;
-        float r2 = 0.4f;
-
-        if (d < r1 + r2) {
-            //監督スクリプトにhpをへらしてもらう
-            PlayerManager.Instance.DecreaseHp (10);
-
-            //コンボリセット
-            ScoreManager.Instance.resetCombo ();
+            transform.Translate (velocity, Space.World);
         }
 
         if (!GetComponent<Renderer> ().isVisible) {
-            Destroy (this.gameObject);
+            Destroy (gameObject);
         }
     }
 
@@ -59,5 +49,43 @@ public class MediumEnemyBulletControll : MonoBehaviour {
         V.x = Mathf.Cos (Mathf.Deg2Rad * direction) * speed;
         V.y = Mathf.Sin (Mathf.Deg2Rad * direction) * speed;
         return V;
+    }
+
+    void OnTriggerEnter2D (Collider2D collision) {
+        //接触したオブジェクトのHPをへらす
+        if (PlayerManager.Instance.isYuhAbilityTriggered == true && PlayerManager.Instance.ToChange == true && isTrigger == false) {
+            isTrigger = true;
+        } else if (isTrigger == true) {
+            targetEnemy = collision.gameObject;
+            Destroy (gameObject);
+            int Combo = ScoreManager.Instance.CurrentCombo;
+            int EigenValue;
+            //当たったオブジェクトを調べる（もうちょっと良いコードありそう）
+            switch (collision.gameObject.tag) {
+                case "SmallEnemyMob":
+                    targetEnemy.GetComponent<SmallEnemyManager> ().DecreaseHp ();
+                    break;
+                case "BigEnemyMob":
+                    break;
+                case "MediumEnemy":
+                    targetEnemy.GetComponent<MediumEnemyManager> ().DecreaseHp ();
+                    break;
+                case "BigBoss":
+                    break;
+                default:
+                    Destroy (targetEnemy);
+                    break;
+            }
+            double scrtmp = 100 * (Combo + 1) * 0.01;
+            int add = (int) scrtmp;
+            ScoreManager.Instance.AddScore (add);
+
+        } else {
+            //監督スクリプトにhpをへらしてもらう
+            PlayerManager.Instance.DecreaseHp (10);
+            //コンボリセット
+            ScoreManager.Instance.resetCombo ();
+            Destroy (gameObject);
+        }
     }
 }
