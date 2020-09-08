@@ -14,12 +14,7 @@ public class ClearManager : MonoBehaviour
         // Update is called once per frame
         void Update()
         {
-            Debug.Log(MediumEnemyManager.Instance.EnemyMobMediumHp);
-            if(MediumEnemyManager.Instance.EnemyMobMediumHp <= 0)
-            {
-                anim.Play();
-            }
-
+          
 
         }
     }

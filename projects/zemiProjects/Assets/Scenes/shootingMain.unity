@@ -1523,11 +1523,11 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 8a2b9e2a607dd2143b58c44bc32410b4, type: 3}
-    m_FontSize: 45
+    m_FontSize: 120
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
-    m_MaxSize: 60
+    m_MaxSize: 120
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -1560,8 +1560,8 @@ MonoBehaviour:
   speed: 5
   delay: 0
   style: 1
-  playOnAwake: 1
-  m_progress: 0.43931243
+  playOnAwake: 0
+  m_progress: 0.11
   usePosition: 1
   useRotation: 1
   useScale: 0

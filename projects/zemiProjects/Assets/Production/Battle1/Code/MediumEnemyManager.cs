@@ -23,11 +23,18 @@ public class MediumEnemyManager : MonoBehaviour {
     public bool isMake = false;
     public List<MediumEnemyBulletControll> list = new List<MediumEnemyBulletControll> ();
 
+    //クリア時アニメーションの変数の定義
+    TypefaceAnimator anim;
+
     // Start is called before the first frame update
 
     void Start () { //マイキャラを探してもらう
         this.stMychara = GameObject.Find ("stMychara");
         Random.InitState (System.DateTime.Now.Millisecond);
+
+        //クリア時のアニメーションを流す
+        
+        anim = this.gameObject.GetComponent <TypefaceAnimator> ();
     }
 
     // Update is called once per frame
@@ -57,7 +64,12 @@ public class MediumEnemyManager : MonoBehaviour {
                 shotBullet ();
             };
         }
-
+        //クリア時のアニメーションを流す
+        if (Input.GetMouseButtonDown(0))
+        {
+            anim.Play();
+        }
+        
     }
 
     //被弾処理
