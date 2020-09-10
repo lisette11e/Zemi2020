@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerManager : SingletonMonoBehaviour<PlayerManager> {
+public class PlayerManager : SingletonMonoBehaviour<PlayerManager>
+{
 
     //各種ステータス宣言
     public int AutoHealCount = 0;
@@ -33,7 +34,8 @@ public class PlayerManager : SingletonMonoBehaviour<PlayerManager> {
     GameObject hpGauge;
 
     // Start is called before the first frame update
-    void Start () {
+    void Start()
+    {
         //リリア
         LiliaHp = 500;
         LiliaLv = 1;
@@ -56,11 +58,12 @@ public class PlayerManager : SingletonMonoBehaviour<PlayerManager> {
         StandbyPlayerabilitycount = YuhAbilityCount;
 
         //HPゲージ初期化
-        this.hpGauge = GameObject.Find ("hpGauge");
+        this.hpGauge = GameObject.Find("hpGauge");
 
     }
     //プレイヤー入れ替え
-    public void PlayerSwap () {
+    public void PlayerSwap()
+    {
         SwapHp = CurrentPlayerHp;
         SwapLv = CurrentPlayerLv;
         SwapAttack = CurrentPlayerAttack;
@@ -76,30 +79,37 @@ public class PlayerManager : SingletonMonoBehaviour<PlayerManager> {
         StandbyPlayerAttack = SwapAttack;
         StandbyPlayerabilitycount = Swapabilitycount;
 
-        if (ToChange == false) {
+        if (ToChange == false)
+        {
             ToChange = true;
-        } else {
+        }
+        else
+        {
             ToChange = false;
         }
     }
     //被弾処理
-    public void DecreaseHp (int enemyattack) {
+    public void DecreaseHp(int enemyattack)
+    {
         //被弾時にコンボ値を変更できるようにする
         float currentHp = 0.0f;
         float MaxHp = 0.0f;
         float hpGaugeFill = 0.0f;
         CurrentPlayerHp -= enemyattack;
-        currentHp = (float) CurrentPlayerHp;
-        if (ToChange == false) {
+        currentHp = (float)CurrentPlayerHp;
+        if (ToChange == false)
+        {
             MaxHp = LiliaHp;
-        } else {
+        }
+        else
+        {
             MaxHp = YuhHp;
         }
 
         hpGaugeFill = currentHp / MaxHp;
-        this.hpGauge.GetComponent<Image> ().fillAmount = hpGaugeFill;
+        this.hpGauge.GetComponent<Image>().fillAmount = hpGaugeFill;
 
-        Debug.Log (currentHp);
+        Debug.Log(currentHp);
 
     }
 }
