@@ -111,5 +111,28 @@ public class PlayerManager : SingletonMonoBehaviour<PlayerManager>
 
         Debug.Log(currentHp);
 
+        if (CurrentPlayerHp < 0 && StandbyPlayerHp < 0)
+        {
+            if (AutoHealCount < 0)
+            {
+                //自動回復発動
+                if (PlayerManager.Instance.ToChange == false)
+                {
+                    PlayerManager.Instance.CurrentPlayerHp = PlayerManager.Instance.LiliaHp / 2;
+                    PlayerManager.Instance.StandbyPlayerHp = PlayerManager.Instance.YuhHp / 2;
+                }
+                else
+                {
+                    PlayerManager.Instance.CurrentPlayerHp = PlayerManager.Instance.LiliaHp / 2;
+                    PlayerManager.Instance.StandbyPlayerHp = PlayerManager.Instance.YuhHp / 2;
+                }
+                //被弾処理のコードを使ってHPバーリセット
+                PlayerManager.Instance.DecreaseHp(0);
+            }
+        }
+        else
+        {
+            //ゲームオーバー
+        }
     }
 }

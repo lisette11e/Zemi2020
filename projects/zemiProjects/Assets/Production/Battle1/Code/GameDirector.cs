@@ -18,80 +18,90 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GameDirector : SingletonMonoBehaviour<GameDirector> {
+public class GameDirector : SingletonMonoBehaviour<GameDirector>
+{
 
-  //各種ステータス宣言
-  public float SPmoveTimer = 0.0f;
-  public float SPstandbyTimer = 0.0f;
-  public bool ToSpecialAttack = false;
-  public float bgspeed = -0.05f;
-  public int CurrentPhase = 1;
-  public int EnemyMobSmallDestroyCount = 0;
+    //各種ステータス宣言
+    public float SPmoveTimer = 0.0f;
+    public float SPstandbyTimer = 0.0f;
+    public bool ToSpecialAttack = false;
+    public float bgspeed = -0.05f;
+    public int CurrentPhase = 1;
+    public int EnemyMobSmallDestroyCount = 0;
 
-  GameObject hpGauge;
-  public GameObject MediumEnemyPrefab;
-  void Start () {
+    GameObject hpGauge;
+    public GameObject MediumEnemyPrefab;
+    void Start()
+    {
 
-    /* 仮置です
-    //敵・ざこいの（小）
-    EnemyMobSmallHp = 100;
-    EnemyMobSmallAttack = 50;
-    EnemyMobSmallEigenvalue = 1000;
+        /* 仮置です
+        //敵・ざこいの（小）
+        EnemyMobSmallHp = 100;
+        EnemyMobSmallAttack = 50;
+        EnemyMobSmallEigenvalue = 1000;
 
-    //敵・ざこいの（大）
-    EnemyMobBigHp = 500;
-    EnemyMobBigAttack = 100;
-    EnemyMobBigEigenvalue = 1500;
+        //敵・ざこいの（大）
+        EnemyMobBigHp = 500;
+        EnemyMobBigAttack = 100;
+        EnemyMobBigEigenvalue = 1500;
 
-    //敵・中ボス
-    BossMiddleHp = 1000;
-    BossMiddleAttack = 100;
-    BossMiddleEigenvalue = 5000;
+        //敵・中ボス
+        BossMiddleHp = 1000;
+        BossMiddleAttack = 100;
+        BossMiddleEigenvalue = 5000;
 
-    //敵・大ボス
-    BossLargeHp = 10000;
-    BossLargeAttack = 200;
-    BossLargeEigenvalue = 15000;
-    */
+        //敵・大ボス
+        BossLargeHp = 10000;
+        BossLargeAttack = 200;
+        BossLargeEigenvalue = 15000;
+        */
 
-    //HPゲージ初期化
-    this.hpGauge = GameObject.Find ("hpGauge");
+        //HPゲージ初期化
+        this.hpGauge = GameObject.Find("hpGauge");
 
-  }
-  void Update () {
-    if (EnemyMobSmallDestroyCount >= 1) {
-      EnemyMobSmallDestroyCount = 0;
-      TransitionPhase ();
     }
-  }
-
-  //スペシャルムーブ発動
-  public void runSpecialMove () {
-    //フラグスタンバイ
-    ToSpecialAttack = true;
-    
-    //=====モブ敵を全部ぶちのめす=====
-    GameObject[] mobs = GameObject.FindGameObjectsWithTag ("SmallEnemyMob");
-    foreach (GameObject mob in mobs) {
-      mob.GetComponent<SmallEnemyManager> ().SpecialMoveDestroy ();
+    void Update()
+    {
+        if (EnemyMobSmallDestroyCount >= 1)
+        {
+            EnemyMobSmallDestroyCount = 0;
+            TransitionPhase();
+        }
     }
 
-    //10秒タイマー始動
-    while (SPmoveTimer == 10.0f) {
-      SPstandbyTimer += Time.deltaTime;
-    }
-    ToSpecialAttack = false;
-    //スタンバイ
-    while (SPstandbyTimer == 10.0f) {
-      SPstandbyTimer += Time.deltaTime;
-    }
-  }
+    //スペシャルムーブ発動
+    public void runSpecialMove()
+    {
+        //フラグスタンバイ
+        ToSpecialAttack = true;
 
-  public void TransitionPhase () {
-    CurrentPhase++;
-    if (CurrentPhase == 2) {
-      Instantiate (MediumEnemyPrefab, new Vector3 (0.0f, 3.0f, 0.0f), Quaternion.identity);
+        //=====モブ敵を全部ぶちのめす=====
+        GameObject[] mobs = GameObject.FindGameObjectsWithTag("SmallEnemyMob");
+        foreach (GameObject mob in mobs)
+        {
+            mob.GetComponent<SmallEnemyManager>().SpecialMoveDestroy();
+        }
+
+        //10秒タイマー始動
+        while (SPmoveTimer == 10.0f)
+        {
+            SPstandbyTimer += Time.deltaTime;
+        }
+        ToSpecialAttack = false;
+        //スタンバイ
+        while (SPstandbyTimer == 10.0f)
+        {
+            SPstandbyTimer += Time.deltaTime;
+        }
     }
-  }
+
+    public void TransitionPhase()
+    {
+        CurrentPhase++;
+        if (CurrentPhase == 2)
+        {
+            Instantiate(MediumEnemyPrefab, new Vector3(0.0f, 3.0f, 0.0f), Quaternion.identity);
+        }
+    }
 
 }
