@@ -27,7 +27,7 @@ public class HealAbility : MonoBehaviour
             }
 
             //被弾処理のコードを使ってHPバーリセット
-             PlayerManager.Instance.DecreaseHp(0);
+            PlayerManager.Instance.DecreaseHp(0);
         }
     }
 }
