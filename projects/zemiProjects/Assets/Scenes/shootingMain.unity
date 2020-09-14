@@ -1475,6 +1475,7 @@ GameObject:
   - component: {fileID: 1058753825}
   - component: {fileID: 1058753824}
   - component: {fileID: 1058753826}
+  - component: {fileID: 1058753828}
   - component: {fileID: 1058753827}
   m_Layer: 5
   m_Name: Clear
@@ -1515,7 +1516,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.8509804, g: 0.074509814, b: 0.24890202, a: 1}
+  m_Color: {r: 0.8509804, g: 0.3946368, b: 0.074509814, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 0
   m_OnCullStateChanged:
@@ -1523,11 +1524,11 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 8a2b9e2a607dd2143b58c44bc32410b4, type: 3}
-    m_FontSize: 120
+    m_FontSize: 142
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
-    m_MaxSize: 120
+    m_MaxSize: 186
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -1561,7 +1562,7 @@ MonoBehaviour:
   delay: 0
   style: 1
   playOnAwake: 0
-  m_progress: 0.11
+  m_progress: 0
   usePosition: 1
   useRotation: 1
   useScale: 0
@@ -1766,7 +1767,28 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   colorSeparation: 0.5
---- !u!114 &1058753827
+--- !u!223 &1058753827
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1058753822}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 1
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 1
+  m_TargetDisplay: 0
+--- !u!114 &1058753828
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1775,9 +1797,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 1058753822}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b063b00715ad248c495c50febb4d477f, type: 3}
+  m_Script: {fileID: 11500000, guid: 736cea233583f47fca91d32edd2f1f2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  EnemyMobMediumHp: 1000
+  EnemyMobMediumAttack: 100
+  EnemyMobMediumEigenvalue: 5000
+  EnemyBullet: {fileID: 0}
+  explosionPrefab: {fileID: 0}
+  targetTime: 3
+  currentTime: 0
+  deg: 0
+  isMake: 0
+  list: []
 --- !u!1 &1199352568
 GameObject:
   m_ObjectHideFlags: 0
