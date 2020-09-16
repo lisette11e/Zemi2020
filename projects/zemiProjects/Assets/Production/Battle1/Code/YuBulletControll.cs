@@ -24,7 +24,6 @@ public class YuBulletControll : MonoBehaviour {
         targetEnemy = collision.gameObject;
         Destroy (gameObject);
         int Combo = ScoreManager.Instance.CurrentCombo;
-        int EigenValue;
         //当たったオブジェクトを調べる（もうちょっと良いコードありそう）
         switch (collision.gameObject.tag) {
             case "SmallEnemyMob":

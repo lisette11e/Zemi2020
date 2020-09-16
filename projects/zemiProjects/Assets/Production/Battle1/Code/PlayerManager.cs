@@ -109,7 +109,9 @@ public class PlayerManager : SingletonMonoBehaviour<PlayerManager>
         hpGaugeFill = currentHp / MaxHp;
         this.hpGauge.GetComponent<Image>().fillAmount = hpGaugeFill;
 
-        Debug.Log(currentHp);
+        if(GameDirector.Instance.ToSpecialAttack == true){
+            GameDirector.Instance.ToSpecialAttack = false;
+        }
 
         if (CurrentPlayerHp < 0 && StandbyPlayerHp < 0)
         {
