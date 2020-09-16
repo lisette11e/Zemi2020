@@ -99,6 +99,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   explosionPrefab: {fileID: 0}
   targetEnemy: {fileID: 0}
+  LiliaLv1: {fileID: 21300000, guid: 06e4121686934be45bff09ff5717a448, type: 3}
+  LiliaLv2: {fileID: 21300000, guid: 8f10f4e3b703eb841b5ce9201f01bbcd, type: 3}
+  LiliaLv3: {fileID: 21300000, guid: dbb775380ee91ab439f570236969b89c, type: 3}
+  LiliaSp: {fileID: 21300000, guid: 4f624c2fdcaf5914392e97d187de0b23, type: 3}
+  YuLv1: {fileID: 21300000, guid: 3e29d229ca0659643a89d8419338bbae, type: 3}
+  YuLv2: {fileID: 21300000, guid: afbddef6e9571b240bd6edb36b1baf40, type: 3}
+  YuLv3: {fileID: 21300000, guid: afed4d7e21e20c84c863fd37ad6c0044, type: 3}
+  YuSp: {fileID: 21300000, guid: 2b0d899eef6c3824ca905256130752ce, type: 3}
+  diffusionAngle: 0.5
+  bulletSpeed: 0.05
+  directionx: 0
+  directiony: 0
 --- !u!58 &7141218506607857239
 CircleCollider2D:
   m_ObjectHideFlags: 0

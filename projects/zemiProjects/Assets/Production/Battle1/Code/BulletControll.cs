@@ -12,6 +12,15 @@ public class BulletControll : MonoBehaviour
     public GameObject targetEnemy;
     Renderer targetRenderer;
 
+    public Sprite LiliaLv1;
+    public Sprite LiliaLv2;
+    public Sprite LiliaLv3;
+    public Sprite LiliaSp;
+    public Sprite YuLv1;
+    public Sprite YuLv2;
+    public Sprite YuLv3;
+    public Sprite YuSp;
+
     //ホーミング用
     public float diffusionAngle = 0.5f;
     public float bulletSpeed = 0.05f;
@@ -23,9 +32,56 @@ public class BulletControll : MonoBehaviour
         targetRenderer = GetComponent<Renderer>();
         directionx = Random.value;
         directiony = Random.value;
+        SpriteRenderer MainSR = gameObject.GetComponent<SpriteRenderer>();
+
+        //発射する弾の分岐
         if (GameDirector.Instance.ToSpecialAttack == true)
         {
-            transform.localScale = new Vector3(1.8f, 0.3f, 0.3f);
+            if (PlayerManager.Instance.ToChange == true)
+            {
+                MainSR.sprite = YuSp;
+            }
+            else
+            {
+                MainSR.sprite = LiliaSp;
+            }
+        }
+        else
+        {
+            switch (GameDirector.Instance.shotLv)
+            {
+                case 1:
+                    if (PlayerManager.Instance.ToChange == true)
+                    {
+                        MainSR.sprite = YuLv1;
+                    }
+                    else
+                    {
+                        MainSR.sprite = LiliaLv1;
+                    }
+                    break;
+
+                case 2:
+                    if (PlayerManager.Instance.ToChange == true)
+                    {
+                        MainSR.sprite = YuLv2;
+                    }
+                    else
+                    {
+                        MainSR.sprite = LiliaLv2;
+                    }
+                    break;
+                case 3:
+                    if (PlayerManager.Instance.ToChange == true)
+                    {
+                        MainSR.sprite = YuLv3;
+                    }
+                    else
+                    {
+                        MainSR.sprite = LiliaLv3;
+                    }
+                    break;
+            }
         }
     }
 
