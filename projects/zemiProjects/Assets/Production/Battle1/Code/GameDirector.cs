@@ -28,6 +28,7 @@ public class GameDirector : SingletonMonoBehaviour<GameDirector>
     public float bgspeed = -0.05f;
     public int CurrentPhase = 1;
     public int EnemyMobSmallDestroyCount = 0;
+    public int shotLv = 1;
 
     GameObject hpGauge;
     public GameObject MediumEnemyPrefab;
