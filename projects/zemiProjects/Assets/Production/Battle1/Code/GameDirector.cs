@@ -29,6 +29,9 @@ public class GameDirector : SingletonMonoBehaviour<GameDirector>
     public int CurrentPhase = 1;
     public int EnemyMobSmallDestroyCount = 0;
     public int shotLv = 1;
+    public bool enemyGen = false;
+
+    public float StartStandby = 0.0f; //ゲームスタートまでの時間
 
     GameObject hpGauge;
     public GameObject MediumEnemyPrefab;
@@ -59,6 +62,8 @@ public class GameDirector : SingletonMonoBehaviour<GameDirector>
 
         //HPゲージ初期化
         this.hpGauge = GameObject.Find("hpGauge");
+
+        gameStart();
 
     }
     void Update()
@@ -105,4 +110,13 @@ public class GameDirector : SingletonMonoBehaviour<GameDirector>
         }
     }
 
+    void gameStart()
+    {
+        //タイマー始動
+        while (StartStandby == 3.0f)
+        {
+            StartStandby += Time.deltaTime;
+        }
+        enemyGen = true;
+    }
 }
