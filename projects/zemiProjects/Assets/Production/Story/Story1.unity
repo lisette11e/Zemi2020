@@ -666,6 +666,9 @@ GameObject:
   - component: {fileID: 303435780}
   - component: {fileID: 303435778}
   - component: {fileID: 303435777}
+  - component: {fileID: 303435779}
+  - component: {fileID: 303435782}
+  - component: {fileID: 303435783}
   m_Layer: 0
   m_Name: Flowchart
   m_TagString: Untagged
@@ -731,7 +734,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 70
     y: 68
-    width: 86.5
+    width: 86
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -740,13 +743,14 @@ MonoBehaviour:
   description: 
   eventHandler: {fileID: 303435740}
   commandList:
-  - {fileID: 303435772}
+  - {fileID: 303435782}
   - {fileID: 303435769}
   - {fileID: 303435761}
   - {fileID: 303435781}
   - {fileID: 303435760}
   - {fileID: 303435759}
   - {fileID: 303435771}
+  - {fileID: 303435772}
   - {fileID: 303435751}
   - {fileID: 303435752}
   - {fileID: 303435753}
@@ -778,6 +782,8 @@ MonoBehaviour:
   - {fileID: 303435766}
   - {fileID: 303435767}
   - {fileID: 303435768}
+  - {fileID: 303435783}
+  - {fileID: 303435779}
   suppressAllAutoSelections: 0
 --- !u!114 &303435742
 MonoBehaviour:
@@ -792,10 +798,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  scrollPos: {x: 0, y: 0}
+  scrollPos: {x: 47.5, y: 180.5}
   variablesScrollPos: {x: 0, y: 0}
   variablesExpanded: 1
-  blockViewHeight: 400
+  blockViewHeight: 538
   zoom: 1
   scrollViewRect:
     serializedVersion: 2
@@ -806,7 +812,7 @@ MonoBehaviour:
   selectedBlocks:
   - {fileID: 303435741}
   selectedCommands:
-  - {fileID: 303435745}
+  - {fileID: 303435779}
   variables: []
   description: 
   stepPause: 0
@@ -1737,7 +1743,7 @@ MonoBehaviour:
   waitUntilFinished: 0
 --- !u!114 &303435777
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -1767,7 +1773,7 @@ MonoBehaviour:
   waitUntilFinished: 1
 --- !u!114 &303435778
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -1795,6 +1801,25 @@ MonoBehaviour:
   move: 0
   shiftIntoPlace: 0
   waitUntilFinished: 1
+--- !u!114 &303435779
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 303435738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00d03ae0919f04264b018681ed534177, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 43
+  indentLevel: 0
+  _sceneName:
+    stringRef: {fileID: 0}
+    stringVal: St1op
+  loadingImage: {fileID: 2800000, guid: a073a420f2c08ba458b17a286beff6e7, type: 3}
+  sceneNameOLD: 
 --- !u!114 &303435780
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -1855,6 +1880,46 @@ MonoBehaviour:
   move: 0
   shiftIntoPlace: 0
   waitUntilFinished: 1
+--- !u!114 &303435782
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 303435738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 207aecf668a0345388087ccf522f9957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 44
+  indentLevel: 0
+  duration: 1
+  targetAlpha: 0
+  waitUntilFinished: 1
+  fadeColor: {r: 0, g: 0, b: 0, a: 1}
+  fadeTexture: {fileID: 0}
+  fadeTweenType: 4
+--- !u!114 &303435783
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 303435738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 207aecf668a0345388087ccf522f9957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 45
+  indentLevel: 0
+  duration: 1
+  targetAlpha: 1
+  waitUntilFinished: 1
+  fadeColor: {r: 0, g: 0, b: 0, a: 1}
+  fadeTexture: {fileID: 0}
+  fadeTweenType: 4
 --- !u!1 &400040451
 GameObject:
   m_ObjectHideFlags: 0
