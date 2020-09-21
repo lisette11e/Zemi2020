@@ -9,6 +9,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class ScoreManager : SingletonMonoBehaviour<ScoreManager> {
 
@@ -26,8 +27,8 @@ public class ScoreManager : SingletonMonoBehaviour<ScoreManager> {
   }
 
   void Update () {
-    this.ScoreObject.GetComponent<Text> ().text = CurrentScore.ToString ("D6");
-    this.ComboDisp.GetComponent<Text> ().text = CurrentCombo.ToString ();
+    this.ScoreObject.GetComponent<TextMeshProUGUI> ().text = CurrentScore.ToString ("D6");
+    this.ComboDisp.GetComponent<TextMeshProUGUI> ().text = CurrentCombo.ToString ();
   }
 
   public void AddScore (int adScore) {
