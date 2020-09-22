@@ -8,17 +8,20 @@ public class chgSprite : MonoBehaviour
     public Sprite spriteMae;
     public Sprite spriteAto;
 
-    private bool chFlg = false;
+    public GameObject chara;
+
+    void Start(){
+      chara = GameObject.Find("stMychara");
+    }
 
     // Start is called before the first frame update
-    public void changeSprite()
+    public void OnClick()
     {
-        if(!chFlg){
-            this.gameObject.GetComponent<Image>().sprite = spriteAto;
-            chFlg = true;
+        if(!PlayerManager.Instance.ToChange){
+            chara.GetComponent<SpriteRenderer>().sprite = spriteAto;
         }else{
-            this.gameObject.GetComponent<Image>().sprite = spriteMae;
-            chFlg = false;
+            chara.GetComponent<SpriteRenderer>().sprite = spriteMae;
         }
+        PlayerManager.Instance.PlayerSwap();
     }
 }
