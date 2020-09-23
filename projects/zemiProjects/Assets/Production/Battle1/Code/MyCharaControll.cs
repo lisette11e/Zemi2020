@@ -13,7 +13,13 @@ public class MyCharaControll : MonoBehaviour
     {
         SE = GetComponent<AudioSource>();
     }
-    public GameObject bulletPrefab;
+    public GameObject LiliaLv1;
+    public GameObject LiliaLv2;
+    public GameObject LiliaLv3;
+    public GameObject LiliaSp;
+    public GameObject YuLv1;
+    public GameObject YuLv2;
+    public GameObject YuLv3;
 
     // Update is called once per frame
     void Update()
@@ -29,18 +35,40 @@ public class MyCharaControll : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             SE.PlayOneShot(sound1);
-            if (PlayerManager.Instance.ToChange == false)
+            switch (GameDirector.Instance.shotLv)
             {
-                Instantiate(bulletPrefab, transform.position, Quaternion.identity);
-            }
-            else
-            {
-                for (int i = 0; i < 3; i++)
-                {
-                    Instantiate(bulletPrefab, transform.position, Quaternion.identity);
-                }
-            }
+                case 1:
+                    if (PlayerManager.Instance.ToChange == true)
+                    {
+                        Instantiate(YuLv1, transform.position, Quaternion.identity);
+                    }
+                    else
+                    {
+                        Instantiate(LiliaLv1, transform.position, Quaternion.identity);
+                    }
+                    break;
 
+                case 2:
+                    if (PlayerManager.Instance.ToChange == true)
+                    {
+                        Instantiate(YuLv2, transform.position, Quaternion.identity);
+                    }
+                    else
+                    {
+                        Instantiate(LiliaLv2, transform.position, Quaternion.identity);
+                    }
+                    break;
+                case 3:
+                    if (PlayerManager.Instance.ToChange == true)
+                    {
+                        Instantiate(YuLv3, transform.position, Quaternion.identity);
+                    }
+                    else
+                    {
+                        Instantiate(LiliaLv3, transform.position, Quaternion.identity);
+                    }
+                    break;
+                  }
         }
     }
 }
