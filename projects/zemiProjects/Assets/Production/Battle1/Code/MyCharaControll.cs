@@ -33,7 +33,10 @@ public class MyCharaControll : MonoBehaviour
           position = Input.mousePosition;
           position.z = 10.0f;
           toWorld = Camera.main.ScreenToWorldPoint(position);
-          gameObject.transform.position = toWorld;
+          if(toWorld.y > -3.0f){
+            gameObject.transform.position = toWorld;
+          }
+
           currentTime += Time.deltaTime;
           Debug.Log(currentTime);
           if(currentTime > targetTime){
