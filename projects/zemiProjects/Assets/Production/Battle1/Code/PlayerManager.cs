@@ -79,14 +79,7 @@ public class PlayerManager : SingletonMonoBehaviour<PlayerManager>
         StandbyPlayerAttack = SwapAttack;
         StandbyPlayerabilitycount = Swapabilitycount;
 
-        if (ToChange == false)
-        {
-            ToChange = true;
-        }
-        else
-        {
-            ToChange = false;
-        }
+        DecreaseHp(0);
     }
     //被弾処理
     public void DecreaseHp(int enemyattack)

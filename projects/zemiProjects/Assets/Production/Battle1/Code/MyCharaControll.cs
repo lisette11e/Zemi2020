@@ -16,7 +16,6 @@ public class MyCharaControll : MonoBehaviour
     public GameObject LiliaLv1;
     public GameObject LiliaLv2;
     public GameObject LiliaLv3;
-    public GameObject LiliaSp;
     public GameObject YuLv1;
     public GameObject YuLv2;
     public GameObject YuLv3;
