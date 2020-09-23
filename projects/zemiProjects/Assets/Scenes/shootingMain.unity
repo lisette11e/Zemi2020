@@ -2676,6 +2676,8 @@ MonoBehaviour:
   YuLv1: {fileID: 1757522377945679833, guid: 0b48c30eb3e54b546845343b9161a77b, type: 3}
   YuLv2: {fileID: 1757522377945679833, guid: 2220f6e65f647bd48ae4a5f1c4ae3ebf, type: 3}
   YuLv3: {fileID: 1757522377945679833, guid: b26e12ca667b7b74e9cb6da21cb2b919, type: 3}
+  targetTime: 0.25
+  currentTime: 0
 --- !u!212 &1709318191
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2735,7 +2737,7 @@ Transform:
   m_GameObject: {fileID: 1709318189}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.06, y: -1.95, z: 0}
-  m_LocalScale: {x: 0.07612067, y: 0.07612067, z: 0.07612067}
+  m_LocalScale: {x: 0.07612067, y: 0.07612067, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1

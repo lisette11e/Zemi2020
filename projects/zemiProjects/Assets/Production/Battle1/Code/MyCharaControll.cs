@@ -8,6 +8,11 @@ public class MyCharaControll : MonoBehaviour
 {
     public AudioClip sound1;
     AudioSource SE;
+
+    //位置座標
+    Vector3 position;
+    Vector3 toWorld;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,20 +24,19 @@ public class MyCharaControll : MonoBehaviour
     public GameObject YuLv1;
     public GameObject YuLv2;
     public GameObject YuLv3;
-
+    public float targetTime = 1.0f;
+    public float currentTime = 0.0f;
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.LeftArrow))
-        {
-            transform.Translate(-0.01f, 0, 0);
-        }
-        if (Input.GetKey(KeyCode.RightArrow))
-        {
-            transform.Translate(0.01f, 0, 0);
-        }
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
+        if (Input.GetMouseButton(0)){
+          position = Input.mousePosition;
+          position.z = 10.0f;
+          toWorld = Camera.main.ScreenToWorldPoint(position);
+          gameObject.transform.position = toWorld;
+          currentTime += Time.deltaTime;
+          Debug.Log(currentTime);
+          if(currentTime > targetTime){
             SE.PlayOneShot(sound1);
             switch (GameDirector.Instance.shotLv)
             {
@@ -68,6 +72,9 @@ public class MyCharaControll : MonoBehaviour
                     }
                     break;
                   }
+                  currentTime = 0.0f;
+                }
+
         }
     }
 }
