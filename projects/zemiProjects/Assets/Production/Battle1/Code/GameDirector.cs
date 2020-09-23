@@ -89,13 +89,13 @@ public class GameDirector : SingletonMonoBehaviour<GameDirector>
         }
 
         //10秒タイマー始動
-        while (SPmoveTimer == 10.0f)
+        while (SPmoveTimer > 10.0f)
         {
             SPstandbyTimer += Time.deltaTime;
         }
         ToSpecialAttack = false;
         //スタンバイ
-        while (SPstandbyTimer == 10.0f)
+        while (SPstandbyTimer > 10.0f)
         {
             SPstandbyTimer += Time.deltaTime;
         }
@@ -118,5 +118,16 @@ public class GameDirector : SingletonMonoBehaviour<GameDirector>
             StartStandby += Time.deltaTime;
         }
         enemyGen = true;
+    }
+
+    public void YuSkill(){
+      float yuskilltimer = 0.0f;
+      PlayerManager.Instance.isYuhAbilityTriggered = true;
+        while (yuskilltimer < 10.0f)
+        {
+            yuskilltimer += Time.deltaTime;
+            PlayerManager.Instance.isYuhAbilityTriggered = true;
+        }
+        PlayerManager.Instance.isYuhAbilityTriggered = false;
     }
 }

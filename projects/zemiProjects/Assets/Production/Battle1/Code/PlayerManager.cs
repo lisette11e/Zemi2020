@@ -79,29 +79,14 @@ public class PlayerManager : SingletonMonoBehaviour<PlayerManager>
         StandbyPlayerAttack = SwapAttack;
         StandbyPlayerabilitycount = Swapabilitycount;
 
-        DecreaseHp(0);
+        redrawHpgauge();
     }
     //被弾処理
     public void DecreaseHp(int enemyattack)
     {
         //被弾時にコンボ値を変更できるようにする
-        float currentHp = 0.0f;
-        float MaxHp = 0.0f;
-        float hpGaugeFill = 0.0f;
+
         CurrentPlayerHp -= enemyattack;
-        currentHp = (float)CurrentPlayerHp;
-        if (ToChange == false)
-        {
-            MaxHp = LiliaHp;
-        }
-        else
-        {
-            MaxHp = YuhHp;
-        }
-
-        hpGaugeFill = currentHp / MaxHp;
-        this.hpGauge.GetComponent<Image>().fillAmount = hpGaugeFill;
-
         if(GameDirector.Instance.ToSpecialAttack == true){
             GameDirector.Instance.ToSpecialAttack = false;
         }
@@ -121,13 +106,30 @@ public class PlayerManager : SingletonMonoBehaviour<PlayerManager>
                     PlayerManager.Instance.CurrentPlayerHp = PlayerManager.Instance.LiliaHp / 2;
                     PlayerManager.Instance.StandbyPlayerHp = PlayerManager.Instance.YuhHp / 2;
                 }
-                //被弾処理のコードを使ってHPバーリセット
-                PlayerManager.Instance.DecreaseHp(0);
+
             }
         }
         else
         {
             //ゲームオーバー
         }
+      redrawHpgauge();
+    }
+
+    public void redrawHpgauge(){
+      float currentHp = 0.0f;
+      float MaxHp = 0.0f;
+      float hpGaugeFill = 0.0f;
+      currentHp = (float)CurrentPlayerHp;
+      if (ToChange == false)
+      {
+          MaxHp = LiliaHp;
+      }
+      else
+      {
+          MaxHp = YuhHp;
+      }
+      hpGaugeFill = currentHp / MaxHp;
+      this.hpGauge.GetComponent<Image>().fillAmount = hpGaugeFill;
     }
 }
