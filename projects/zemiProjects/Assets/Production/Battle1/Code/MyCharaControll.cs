@@ -38,7 +38,6 @@ public class MyCharaControll : MonoBehaviour
           }
 
           currentTime += Time.deltaTime;
-          Debug.Log(currentTime);
           if(currentTime > targetTime){
             SE.PlayOneShot(sound1);
             switch (GameDirector.Instance.shotLv)

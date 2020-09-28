@@ -112,7 +112,6 @@ public class MediumEnemyManager : MonoBehaviour
     **********/
     public void shotBullet()
     {
-        Debug.Log(deg);
         float hankei = 2f; //弾オブジェクトを配置する円の半径
         float BulletInterval = 30f; //弾を生成する角度
         currentTime = 0;　 //タイマーを初期化
