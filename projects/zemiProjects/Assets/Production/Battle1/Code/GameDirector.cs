@@ -119,15 +119,4 @@ public class GameDirector : SingletonMonoBehaviour<GameDirector>
         }
         enemyGen = true;
     }
-
-    public void YuSkill(){
-      float yuskilltimer = 0.0f;
-      PlayerManager.Instance.isYuhAbilityTriggered = true;
-        while (yuskilltimer < 10.0f)
-        {
-            yuskilltimer += Time.deltaTime;
-            PlayerManager.Instance.isYuhAbilityTriggered = true;
-        }
-        PlayerManager.Instance.isYuhAbilityTriggered = false;
-    }
 }
