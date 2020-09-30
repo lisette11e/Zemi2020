@@ -78,6 +78,10 @@ public class GameDirector : SingletonMonoBehaviour<GameDirector>
     //スペシャルムーブ発動
     public void runSpecialMove()
     {
+        Animation anim;
+     anim = this.gameObject.GetComponent<Animation> ();
+     anim.Play ();
+     
         //フラグスタンバイ
         ToSpecialAttack = true;
 
