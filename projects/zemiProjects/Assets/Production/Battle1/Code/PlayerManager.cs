@@ -85,7 +85,6 @@ public class PlayerManager : SingletonMonoBehaviour<PlayerManager>
     public void DecreaseHp(int enemyattack)
     {
         //被弾時にコンボ値を変更できるようにする
-
         CurrentPlayerHp -= enemyattack;
         if(GameDirector.Instance.ToSpecialAttack == true){
             GameDirector.Instance.ToSpecialAttack = false;
@@ -130,6 +129,7 @@ public class PlayerManager : SingletonMonoBehaviour<PlayerManager>
           MaxHp = YuhHp;
       }
       hpGaugeFill = currentHp / MaxHp;
+      Debug.Log(hpGaugeFill);
       this.hpGauge.GetComponent<Image>().fillAmount = hpGaugeFill;
     }
 }
