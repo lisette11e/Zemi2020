@@ -46,16 +46,11 @@ public class MediumEnemyBulletControll : MonoBehaviour {
     }
 
     void OnTriggerEnter2D (Collider2D col) {
-        Debug.Log(PlayerManager.Instance.isYuhAbilityTriggered);
-        Debug.Log(isTrigger);
-        Debug.Log(col.gameObject.name);
         if (col.gameObject.name == "stMychara") {
-            Debug.Log("Player判定");
             if (PlayerManager.Instance.isYuhAbilityTriggered == true && isTrigger == false) {
                 isTrigger = true; 
-                Debug.Log("isTrigger");
             } else {
-                PlayerManager.Instance.DecreaseHp (10);
+                PlayerManager.Instance.DecreaseHp (50);
                 //コンボリセット
                 ScoreManager.Instance.resetCombo ();
                 Destroy (gameObject);
@@ -64,7 +59,6 @@ public class MediumEnemyBulletControll : MonoBehaviour {
             targetEnemy = col.gameObject;
             Destroy (gameObject);
             int Combo = ScoreManager.Instance.CurrentCombo;
-            int EigenValue;
             //当たったオブジェクトを調べる（もうちょっと良いコードありそう）
             switch (col.gameObject.tag) {
                 case "SmallEnemyMob":
