@@ -32,14 +32,30 @@ public class MediumEnemyManager : MonoBehaviour {
         this.stMychara = GameObject.Find ("stMychara");
         Random.InitState (System.DateTime.Now.Millisecond);
 
-        //クリア時のアニメーションを流す
+       
 
-         anim = this.gameObject.GetComponent <TypefaceAnimator> ();
+        
 
     }
 
     // Update is called once per frame
     void Update () {
+        //ステージクリアの出現
+        Transform myTransform = this.transform;
+        Vector3 pos = myTransform.position; //座標を取得
+        if (EnemyMobMediumHp < 1)
+        {
+            pos.y += -400f; //clearの出現
+        }
+
+        myTransform.position = pos; //座標を設定
+
+        anim = this.gameObject.GetComponent<TypefaceAnimator>();
+        //クリア時のアニメーションを流す
+        if (EnemyMobMediumHp < 1)
+        {
+            anim.Play();
+        }
         //キャラと敵の当たり判定
         Vector2 p1 = transform.position;
         Vector2 p2 = this.stMychara.transform.position;
@@ -81,8 +97,7 @@ public class MediumEnemyManager : MonoBehaviour {
             double scrtmp = 5000 * (Combo + 1) * 0.01;
             int add = (int) scrtmp;
             ScoreManager.Instance.AddScore (add);
-            //クリア時のアニメーションを流す
-            anim.Play();
+            
         }
     }
 
