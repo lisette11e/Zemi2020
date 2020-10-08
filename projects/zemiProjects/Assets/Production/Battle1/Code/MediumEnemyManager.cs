@@ -24,6 +24,9 @@ public class MediumEnemyManager : MonoBehaviour
     public bool isMake = false;
     public List<MediumEnemyBulletControll> list = new List<MediumEnemyBulletControll>();
 
+    //クリア時アニメーションの変数の定義
+    TypefaceAnimator anim;
+
     public float scChangestandby = 3.0f; //次シーンまでのタイマー
 
     // Start is called before the first frame update
@@ -65,7 +68,11 @@ public class MediumEnemyManager : MonoBehaviour
                 shotBullet();
             };
         }
-
+        //クリア時のアニメーションを流す
+        if (Input.GetMouseButtonDown(0))
+        {
+            anim.Play();
+        }
     }
 
     //被弾処理
