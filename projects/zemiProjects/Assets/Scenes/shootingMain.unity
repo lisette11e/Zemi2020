@@ -1597,8 +1597,8 @@ GameObject:
   - component: {fileID: 1058753825}
   - component: {fileID: 1058753824}
   - component: {fileID: 1058753826}
-  - component: {fileID: 1058753827}
   - component: {fileID: 1058753828}
+  - component: {fileID: 1058753827}
   m_Layer: 5
   m_Name: Clear
   m_TagString: Untagged
@@ -1622,7 +1622,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 400}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1058753824
@@ -1646,7 +1646,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 8a2b9e2a607dd2143b58c44bc32410b4, type: 3}
-    m_FontSize: 30
+    m_FontSize: 142
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
