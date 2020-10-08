@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 ﻿{"cameraMode":{"drawMode":0,"name":"Shaded","section":"Shading Mode"},"sceneLighting":true,"audioPlay":false,"sceneViewState":{"showFog":true,"showMaterialUpdate":false,"showSkybox":true,"showFlares":true,"showImageEffects":true,"showParticleSystems":true},"in2DMode":true,"pivot":{"x":0.2412111759185791,"y":-0.49984902143478396,"z":-17.897056579589845},"rotation":{"x":0.0,"y":0.0,"z":0.0,"w":1.0},"size":4.955014228820801,"orthographic":true}
+=======
+﻿{"cameraMode":{"drawMode":0,"name":"Shaded","section":"Shading Mode"},"sceneLighting":true,"audioPlay":false,"sceneViewState":{"showFog":true,"showMaterialUpdate":false,"showSkybox":true,"showFlares":true,"showImageEffects":true,"showParticleSystems":true},"in2DMode":true,"pivot":{"x":-0.19889795780181886,"y":2.394097328186035,"z":-1.8108134269714356},"rotation":{"x":0.0,"y":0.0,"z":0.0,"w":1.0},"size":5.946112155914307,"orthographic":true}
+>>>>>>> parent of 029b86d6... 200827clearanimation
