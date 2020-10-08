@@ -1,12 +1,11 @@
-﻿/* ClearAnimationを作る
- */
-
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
 using UnityEngine.UI; //追加しました
 
-public class ClearAnimationManager : SingletonMonoBehaviour<ScoreManager>{
+public class ClearAnimationManager : MonoBehaviour
+{
 
     public GameObject clear_object = null;//Textオブジェクト
 
@@ -21,6 +20,6 @@ public class ClearAnimationManager : SingletonMonoBehaviour<ScoreManager>{
     {
         Text clear_text = clear_object.GetComponent<Text>();
 
-        clear_text.text = "STAGE CLEAR";
+        clear_text.text = "000000";
     }
 }
