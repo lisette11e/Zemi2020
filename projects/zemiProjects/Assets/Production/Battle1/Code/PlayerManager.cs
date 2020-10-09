@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerManager : SingletonMonoBehaviour<PlayerManager>
-{
+public class PlayerManager : SingletonMonoBehaviour<PlayerManager> {
 
     //各種ステータス宣言
     public int AutoHealCount = 0;
@@ -32,10 +31,12 @@ public class PlayerManager : SingletonMonoBehaviour<PlayerManager>
     public bool ToChange = false;
     public bool isYuhAbilityTriggered = false;
     GameObject hpGauge;
+    public Sprite GaugeGreen;
+    public Sprite GaugeYellow;
+    public Sprite GaugeRed;
 
     // Start is called before the first frame update
-    void Start()
-    {
+    void Start () {
         //リリア
         LiliaHp = 500;
         LiliaLv = 1;
@@ -58,12 +59,11 @@ public class PlayerManager : SingletonMonoBehaviour<PlayerManager>
         StandbyPlayerabilitycount = YuhAbilityCount;
 
         //HPゲージ初期化
-        this.hpGauge = GameObject.Find("hpGauge");
+        this.hpGauge = GameObject.Find ("hpGauge");
 
     }
     //プレイヤー入れ替え
-    public void PlayerSwap()
-    {
+    public void PlayerSwap () {
         SwapHp = CurrentPlayerHp;
         SwapLv = CurrentPlayerLv;
         SwapAttack = CurrentPlayerAttack;
@@ -79,57 +79,57 @@ public class PlayerManager : SingletonMonoBehaviour<PlayerManager>
         StandbyPlayerAttack = SwapAttack;
         StandbyPlayerabilitycount = Swapabilitycount;
 
-        redrawHpgauge();
+        redrawHpgauge ();
     }
     //被弾処理
-    public void DecreaseHp(int enemyattack)
-    {
+    public void DecreaseHp (int enemyattack) {
         //被弾時にコンボ値を変更できるようにする
         CurrentPlayerHp -= enemyattack;
-        if(GameDirector.Instance.ToSpecialAttack == true){
+        if (GameDirector.Instance.ToSpecialAttack == true) {
             GameDirector.Instance.ToSpecialAttack = false;
         }
 
-        if (CurrentPlayerHp < 0 && StandbyPlayerHp < 0)
-        {
-            if (AutoHealCount < 0)
-            {
+        if (CurrentPlayerHp < 0 && StandbyPlayerHp < 0) {
+            if (AutoHealCount < 0) {
                 //自動回復発動
-                if (PlayerManager.Instance.ToChange == false)
-                {
+                if (PlayerManager.Instance.ToChange == false) {
                     PlayerManager.Instance.CurrentPlayerHp = PlayerManager.Instance.LiliaHp / 2;
                     PlayerManager.Instance.StandbyPlayerHp = PlayerManager.Instance.YuhHp / 2;
-                }
-                else
-                {
+                } else {
                     PlayerManager.Instance.CurrentPlayerHp = PlayerManager.Instance.LiliaHp / 2;
                     PlayerManager.Instance.StandbyPlayerHp = PlayerManager.Instance.YuhHp / 2;
                 }
 
             }
-        }
-        else
-        {
+        } else {
             //ゲームオーバー
         }
-      redrawHpgauge();
+        redrawHpgauge ();
     }
 
-    public void redrawHpgauge(){
-      float currentHp = 0.0f;
-      float MaxHp = 0.0f;
-      float hpGaugeFill = 0.0f;
-      currentHp = (float)CurrentPlayerHp;
-      if (ToChange == false)
-      {
-          MaxHp = LiliaHp;
-      }
-      else
-      {
-          MaxHp = YuhHp;
-      }
-      hpGaugeFill = currentHp / MaxHp;
-      Debug.Log(hpGaugeFill);
-      this.hpGauge.GetComponent<Image>().fillAmount = hpGaugeFill;
+    public void redrawHpgauge () {
+        float currentHp = 0.0f;
+        float MaxHp = 0.0f;
+        float hpGaugeFill = 0.0f;
+        Image GaugeImage;
+        GaugeImage = this.hpGauge.GetComponent<Image> ();
+
+        currentHp = (float) CurrentPlayerHp;
+        if (ToChange == false) {
+            MaxHp = LiliaHp;
+        } else {
+            MaxHp = YuhHp;
+        }
+        hpGaugeFill = currentHp / MaxHp;
+        Debug.Log (hpGaugeFill);
+        GaugeImage.fillAmount = hpGaugeFill;
+
+        if (hpGaugeFill >= 0.5f) {
+            GaugeImage.sprite = GaugeGreen;
+        } else if (hpGaugeFill >= 0.25f) {
+            GaugeImage.sprite = GaugeYellow;
+        } else {
+            GaugeImage.sprite = GaugeRed;
+        }
     }
 }
