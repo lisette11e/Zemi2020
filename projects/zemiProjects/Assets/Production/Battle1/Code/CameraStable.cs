@@ -8,7 +8,7 @@ public class CameraStable : MonoBehaviour {
     private float height = 2436.0f;
     private float pixelPerUnit = 200f;
 
-    void Awake () {
+    void Start () {
         float aspect = (float) Screen.height / (float) Screen.width; //表示画面のアスペクト比
         float bgAcpect = height / width; //理想とするアスペクト比
 

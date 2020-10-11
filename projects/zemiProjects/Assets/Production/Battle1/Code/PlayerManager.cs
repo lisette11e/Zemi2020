@@ -107,6 +107,7 @@ public class PlayerManager : SingletonMonoBehaviour<PlayerManager> {
         redrawHpgauge ();
     }
 
+    //HPゲージ再描画
     public void redrawHpgauge () {
         float currentHp = 0.0f;
         float MaxHp = 0.0f;
