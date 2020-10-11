@@ -43,7 +43,7 @@ public class EmenyBulletControll : MonoBehaviour //敵がぶっ放してくる�
             //コンボリセット
             ScoreManager.Instance.resetCombo ();
 
-            //マイキャラと衝突したら弾を消す F
+            //マイキャラと衝突したら弾を消す
             Destroy (gameObject);
         }
     }

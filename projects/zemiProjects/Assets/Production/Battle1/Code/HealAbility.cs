@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class HealAbility : MonoBehaviour
 {    
+    //ヒール処理　最大HPの半分を回復
     public void Onclick(){
         Debug.Log(PlayerManager.Instance.CurrentPlayerHp);
         if (PlayerManager.Instance.ManualHealCount <= 2)

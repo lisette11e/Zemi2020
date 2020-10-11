@@ -8,6 +8,7 @@ public class GenLiliaMob : MonoBehaviour {
     public Transform liliapos;
     // Start is called before the first frame update
 
+  //リリアアビリティ　クリック時にリリアモブのPrefabを生成
     public void Onclick(){
       lilia = GameObject.Find ("stMychara");
       liliapos = lilia.GetComponent<Transform> ();
