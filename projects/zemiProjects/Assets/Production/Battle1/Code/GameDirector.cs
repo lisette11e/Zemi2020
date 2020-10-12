@@ -81,7 +81,7 @@ public class GameDirector : SingletonMonoBehaviour<GameDirector>
         Animation anim;
      anim = this.gameObject.GetComponent<Animation> ();
      anim.Play ();
-     
+
         //フラグスタンバイ
         ToSpecialAttack = true;
 
@@ -114,12 +114,22 @@ public class GameDirector : SingletonMonoBehaviour<GameDirector>
         }
     }
 
+    //フェーズ移行
+    public void TransitionPhase()
+    {
+        CurrentPhase++;
+        if (CurrentPhase == 2)
+        {
+            Instantiate(MediumEnemyPrefab, new Vector3(0.0f, 3.0f, 0.0f), Quaternion.identity);
+        }
+    }
+    
     void gameStart()
     {
          Animation anim;
      anim = this.gameObject.GetComponent<Animation> ();
      anim.Play ();
-     
+
         //タイマー始動
         while (StartStandby == 3.0f)
         {
