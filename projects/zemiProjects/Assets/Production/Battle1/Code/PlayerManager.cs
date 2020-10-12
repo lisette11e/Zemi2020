@@ -39,8 +39,11 @@ public class PlayerManager : SingletonMonoBehaviour<PlayerManager>
     void Start()
     {
         //カットインアニメ試し
+        GameObject image_object
+            = GameObject.Find("Image");
         anim = GetComponent<Animator>();
         anim.SetBool("Cut In",true);
+        anim.SetBool("Cut In", false);
         //リリア
         LiliaHp = 500;
         LiliaLv = 1;
