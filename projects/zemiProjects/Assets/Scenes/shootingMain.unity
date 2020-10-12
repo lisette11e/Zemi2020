@@ -574,7 +574,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 363419107}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 816904940}
@@ -1019,6 +1019,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e48a17ea68de974e870c5d2b5f9a5ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stprefab: {fileID: 0}
 --- !u!1 &676072001
 GameObject:
   m_ObjectHideFlags: 0
@@ -2218,9 +2219,11 @@ MonoBehaviour:
   EnemyMobSmallDestroyCount: 0
   shotLv: 1
   enemyGen: 0
+  toDisplayBossArea: 0
   StartStandby: 0
   MediumEnemyPrefab: {fileID: 3386526047069856026, guid: 768077501f0863a438c2d43940ed8b0a,
     type: 3}
+  St1Boss: {fileID: 0}
 --- !u!4 &1021014112
 Transform:
   m_ObjectHideFlags: 0
