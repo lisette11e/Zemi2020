@@ -1,4 +1,4 @@
-/* キャラクタースワップ
+/* キャラクタースワップ（未使用）
  */
 using System.Collections;
 using System.Collections.Generic;

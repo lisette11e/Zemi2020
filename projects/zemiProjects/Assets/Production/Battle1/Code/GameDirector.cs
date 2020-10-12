@@ -63,16 +63,23 @@ public class GameDirector : SingletonMonoBehaviour<GameDirector>
         //HPゲージ初期化
         this.hpGauge = GameObject.Find("hpGauge");
 
-        gameStart();
 
     }
     void Update()
     {
-        if (EnemyMobSmallDestroyCount >= 1)
+        if (EnemyMobSmallDestroyCount >= 50)
         {
             EnemyMobSmallDestroyCount = 0;
             TransitionPhase();
         }
+
+        //ゲーム開始時に3秒スタンバイ（アニメーション用）
+        while (StartStandby == 3.0f)
+        {
+            StartStandby += Time.deltaTime;
+        }
+        enemyGen = true;
+
     }
 
     //スペシャルムーブ発動
@@ -105,6 +112,7 @@ public class GameDirector : SingletonMonoBehaviour<GameDirector>
         }
     }
 
+    //フェーズ移行
     public void TransitionPhase()
     {
         CurrentPhase++;
@@ -113,7 +121,6 @@ public class GameDirector : SingletonMonoBehaviour<GameDirector>
             Instantiate(MediumEnemyPrefab, new Vector3(0.0f, 3.0f, 0.0f), Quaternion.identity);
         }
     }
-
     //フェーズ移行
     public void TransitionPhase()
     {

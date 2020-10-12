@@ -54,7 +54,6 @@ public class SmallEnemyManager : MonoBehaviour {
     public void DecreaseHp () {
         int Combo = ScoreManager.Instance.CurrentCombo;
         //被弾時にコンボ値を変更できるようにする
-        Debug.Log (PlayerManager.Instance.CurrentPlayerAttack);
         EnemyMobSmallHp -= PlayerManager.Instance.CurrentPlayerAttack;
         if (EnemyMobSmallHp <= 0) {
             Destroy (gameObject);

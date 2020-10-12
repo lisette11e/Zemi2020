@@ -15,7 +15,7 @@ public class chgSprite : MonoBehaviour {
     chara = GameObject.Find ("stMychara");
   }
 
-  // Start is called before the first frame update
+  // ボタンクリック時の処理
   public void Oncilck () {
     if (!PlayerManager.Instance.ToChange) {
       chara.GetComponent<SpriteRenderer> ().sprite = spriteAto;
