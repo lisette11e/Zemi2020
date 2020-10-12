@@ -28,7 +28,10 @@ void 関数の名前（なんのアニメーションかわかるやつにして
 初版・10/12　萩原
 */
 
-public class AnimManager : SingletonMonoBehaviour<AnimManager>
-{
+public class AnimManager : SingletonMonoBehaviour<AnimManager>{
+public GameObject stprefab;
 
+void Gamestart(){
+    Instantiate(stprefab, new Vector3(0.1f, 1.95f, 0.0f), Quaternion.identity);
+}
 }

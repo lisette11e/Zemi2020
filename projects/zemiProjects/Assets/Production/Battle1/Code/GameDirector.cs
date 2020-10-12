@@ -116,6 +116,10 @@ public class GameDirector : SingletonMonoBehaviour<GameDirector>
 
     void gameStart()
     {
+         Animation anim;
+     anim = this.gameObject.GetComponent<Animation> ();
+     anim.Play ();
+     
         //タイマー始動
         while (StartStandby == 3.0f)
         {
