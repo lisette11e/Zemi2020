@@ -20,7 +20,6 @@ public class HealAbility : MonoBehaviour
             //被弾処理のコードを使ってHPバーリセット
             Debug.Log(PlayerManager.Instance.CurrentPlayerHp);
             PlayerManager.Instance.redrawHpgauge();
-            SoundManager.Instance.PlaySeByName("HPcure");
         }
     }
 }
