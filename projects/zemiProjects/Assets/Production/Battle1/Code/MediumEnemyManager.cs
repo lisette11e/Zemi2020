@@ -101,6 +101,7 @@ public class MediumEnemyManager : MonoBehaviour
             ScoreManager.Instance.AddScore(add);
             GameDirector.Instance.shotLv++;
             toNextScene = true;
+            SoundManager.Instance.PlaySeByName("BOSS_Gekiha");
         }
     }
 

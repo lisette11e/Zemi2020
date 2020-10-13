@@ -103,6 +103,7 @@ public class PlayerManager : SingletonMonoBehaviour<PlayerManager> {
             }
         } else {
             //ゲームオーバー
+            SoundManager.Instance.PlaySeByName("Hidan_Player");
         }
         redrawHpgauge ();
     }
@@ -131,6 +132,7 @@ public class PlayerManager : SingletonMonoBehaviour<PlayerManager> {
             GaugeImage.sprite = GaugeYellow;
         } else {
             GaugeImage.sprite = GaugeRed;
+            SoundManager.Instance.PlaySeByName("HPalert");
         }
     }
 }
