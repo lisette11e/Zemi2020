@@ -8,6 +8,7 @@ public class GenLiliaMob : MonoBehaviour {
     public Transform liliapos;
     // Start is called before the first frame update
 
+  //リリアアビリティ　クリック時にリリアモブのPrefabを生成
     public void Onclick(){
       lilia = GameObject.Find ("stMychara");
       liliapos = lilia.GetComponent<Transform> ();
@@ -15,6 +16,7 @@ public class GenLiliaMob : MonoBehaviour {
       if(PlayerManager.Instance.LiliaAbilityCount <= 2){
         Instantiate (LiliaSpMob, new Vector3 (pos.x + 1.0f, pos.y, 0.0f), Quaternion.identity);
         Instantiate (LiliaSpMob, new Vector3 (pos.x - 1.0f, pos.y, 0.0f), Quaternion.identity);
+        SoundManager.Instance.PlaySeByName("必殺技orスキル発動３");
       }
     }
 }

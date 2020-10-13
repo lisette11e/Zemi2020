@@ -20,8 +20,10 @@ public class MediumEnemyManager : MonoBehaviour
     //弾発射用のもの
     public float targetTime = 3.0f;
     public float currentTime = 0;
+    public float TransitionStandBy = 2.0f;
     public float deg = 0;
     public bool isMake = false;
+    public bool toNextScene = false;
     public List<MediumEnemyBulletControll> list = new List<MediumEnemyBulletControll>();
 
     //クリア時アニメーションの変数の定義
@@ -73,6 +75,13 @@ public class MediumEnemyManager : MonoBehaviour
         {
             anim.Play();
         }
+        if(toNextScene == true){
+            while(TransitionStandBy == 0.0f){
+                TransitionStandBy -= Time.deltaTime;
+            }
+        toNextScene =false;
+        FadeManager.Instance.LoadScene("St1Boss", 2.0f);
+        }
     }
 
     //被弾処理
@@ -91,11 +100,8 @@ public class MediumEnemyManager : MonoBehaviour
             int add = (int)scrtmp;
             ScoreManager.Instance.AddScore(add);
             GameDirector.Instance.shotLv++;
-            while (scChangestandby == 3.0f)
-            {
-                scChangestandby += Time.deltaTime;
-            }
-            FadeManager.Instance.LoadScene("St1Boss", 2.0f);
+            toNextScene = true;
+            SoundManager.Instance.PlaySeByName("BOSS_Gekiha");
         }
     }
 

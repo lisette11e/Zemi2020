@@ -7,6 +7,7 @@ public class HealAbility : MonoBehaviour
 {
     //カットイン変数の定義
     private Animator anim;
+
     public void Onclick(){
         //カットインコンポーネント取得
         this.anim = GetComponent<Animator>();
@@ -28,6 +29,7 @@ public class HealAbility : MonoBehaviour
             //被弾処理のコードを使ってHPバーリセット
             Debug.Log(PlayerManager.Instance.CurrentPlayerHp);
             PlayerManager.Instance.redrawHpgauge();
+            SoundManager.Instance.PlaySeByName("HPcure");
         }
     }
 }

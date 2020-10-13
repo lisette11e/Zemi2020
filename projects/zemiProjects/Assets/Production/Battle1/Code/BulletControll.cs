@@ -27,6 +27,7 @@ public class BulletControll : MonoBehaviour
         }
     }
 
+    //接触時の処理
     void OnTriggerEnter2D(Collider2D collision)
     {
         //接触したオブジェクトのHPをへらす

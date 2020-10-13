@@ -30,11 +30,13 @@ public class GameDirector : SingletonMonoBehaviour<GameDirector>
     public int EnemyMobSmallDestroyCount = 0;
     public int shotLv = 1;
     public bool enemyGen = false;
+    public bool toDisplayBossArea = false;
 
     public float StartStandby = 0.0f; //ゲームスタートまでの時間
 
     GameObject hpGauge;
     public GameObject MediumEnemyPrefab;
+    public GameObject St1Boss;
     void Start()
     {
 
@@ -63,16 +65,27 @@ public class GameDirector : SingletonMonoBehaviour<GameDirector>
         //HPゲージ初期化
         this.hpGauge = GameObject.Find("hpGauge");
 
-        gameStart();
 
     }
     void Update()
     {
-        if (EnemyMobSmallDestroyCount >= 1)
+        if (EnemyMobSmallDestroyCount >= 50)
         {
             EnemyMobSmallDestroyCount = 0;
             TransitionPhase();
         }
+
+        //ゲーム開始時に3秒スタンバイ（アニメーション用）
+        while (StartStandby == 3.0f)
+        {
+            StartStandby += Time.deltaTime;
+        }
+        enemyGen = true;
+
+        if(CurrentPhase == 3 && toDisplayBossArea == true){
+            Instantiate(St1Boss, new Vector3(0.0f, 3.0f, 0.0f), Quaternion.identity);
+        }
+
     }
 
     //スペシャルムーブ発動
@@ -81,7 +94,7 @@ public class GameDirector : SingletonMonoBehaviour<GameDirector>
         Animation anim;
      anim = this.gameObject.GetComponent<Animation> ();
      anim.Play ();
-     
+
         //フラグスタンバイ
         ToSpecialAttack = true;
 
@@ -104,7 +117,7 @@ public class GameDirector : SingletonMonoBehaviour<GameDirector>
             SPstandbyTimer += Time.deltaTime;
         }
     }
-
+    //フェーズ移行
     public void TransitionPhase()
     {
         CurrentPhase++;
@@ -113,9 +126,13 @@ public class GameDirector : SingletonMonoBehaviour<GameDirector>
             Instantiate(MediumEnemyPrefab, new Vector3(0.0f, 3.0f, 0.0f), Quaternion.identity);
         }
     }
-
+    
     void gameStart()
     {
+     Animation anim;
+     anim = this.gameObject.GetComponent<Animation> ();
+     anim.Play ();
+
         //タイマー始動
         while (StartStandby == 3.0f)
         {

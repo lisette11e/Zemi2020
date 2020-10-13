@@ -18,7 +18,7 @@ public class BackGround : MonoBehaviour
 
         if (transform.position.y < -12.0f)
         {
-            transform.position = new Vector3(0, 12.0f, 0);
+            transform.position = new Vector3(0, 12.0f, 10.0f);
         }
     }
 }

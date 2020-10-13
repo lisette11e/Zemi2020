@@ -21,6 +21,7 @@ public class MyCharaControll : MonoBehaviour {
     public float currentTime = 0.0f;
     // Update is called once per frame
     void Update () {
+        //タップ→ホールド検知で自動的に弾発射
         if (Input.GetMouseButton (0)) {
             position = Input.mousePosition;
             position.z = 10.0f;
