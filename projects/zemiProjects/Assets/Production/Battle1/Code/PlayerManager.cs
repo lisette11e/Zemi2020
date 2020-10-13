@@ -103,7 +103,7 @@ public class PlayerManager : SingletonMonoBehaviour<PlayerManager> {
             }
         } else {
             //ゲームオーバー
-            SoundManager.Instance.PlaySeByName("Hidan_Player");
+           FadeManager.Instance.LoadScene(gameover2,2.0f) SoundManager.Instance.PlaySeByName("Hidan_Player");
         }
         redrawHpgauge ();
     }
