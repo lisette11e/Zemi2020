@@ -4704,7 +4704,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 72
     y: 67
-    width: 82.5
+    width: 82
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -4768,7 +4768,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  scrollPos: {x: 0, y: 0}
+  scrollPos: {x: 47.5, y: 172.5}
   variablesScrollPos: {x: 0, y: 0}
   variablesExpanded: 1
   blockViewHeight: 400
@@ -4782,7 +4782,7 @@ MonoBehaviour:
   selectedBlocks:
   - {fileID: 2053454000}
   selectedCommands:
-  - {fileID: 2053454003}
+  - {fileID: 2053454004}
   variables: []
   description: 
   stepPause: 0

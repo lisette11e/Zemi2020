@@ -8,9 +8,9 @@ public class Enemybulletgen : MonoBehaviour {
 
     // Start is called before the first frame update
     void Start () {
-        if(GameDirector.Instance.enemyGen == true){
-        //ランダムなタイミングでに弾を生成する
-        InvokeRepeating ("GenBullet", 0.5f, 1);
+        if (GameDirector.Instance.enemyGen == true) {
+            //ランダムなタイミングでに弾を生成する
+            InvokeRepeating ("GenBullet", 0.5f, 1);
         }
 
     }

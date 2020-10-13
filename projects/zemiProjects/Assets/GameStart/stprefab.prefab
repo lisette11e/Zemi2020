@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6354528244994483093}
   - component: {fileID: 994714939363907405}
   - component: {fileID: 3713250607470909871}
+  - component: {fileID: 7378876633179266062}
   m_Layer: 0
   m_Name: stprefab
   m_TagString: Untagged
@@ -106,6 +107,18 @@ Animation:
   m_Animation: {fileID: 7400000, guid: d706b3dc5e2a349a3ad81db3d10f7ef3, type: 2}
   m_Animations: []
   m_WrapMode: 0
-  m_PlayAutomatically: 1
+  m_PlayAutomatically: 0
   m_AnimatePhysics: 0
-  m_CullingType: 0
+  m_CullingType: 1
+--- !u!114 &7378876633179266062
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3228908436358159133}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da8c514cc4defc040afb6a47d2c44776, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

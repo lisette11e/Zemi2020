@@ -1090,6 +1090,8 @@ GameObject:
   - component: {fileID: 545976857}
   - component: {fileID: 545976858}
   - component: {fileID: 545976867}
+  - component: {fileID: 545976869}
+  - component: {fileID: 545976868}
   m_Layer: 0
   m_Name: Flowchart
   m_TagString: Untagged
@@ -1110,7 +1112,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  scrollPos: {x: 0, y: 0}
+  scrollPos: {x: 46, y: 170.5}
   variablesScrollPos: {x: 0, y: 0}
   variablesExpanded: 1
   blockViewHeight: 400
@@ -1124,7 +1126,7 @@ MonoBehaviour:
   selectedBlocks:
   - {fileID: 545976840}
   selectedCommands:
-  - {fileID: 545976867}
+  - {fileID: 545976868}
   variables: []
   description: 
   stepPause: 0
@@ -1167,7 +1169,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 67
     y: 69
-    width: 96
+    width: 95
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -1202,6 +1204,8 @@ MonoBehaviour:
   - {fileID: 545976858}
   - {fileID: 545976857}
   - {fileID: 545976856}
+  - {fileID: 545976869}
+  - {fileID: 545976868}
   suppressAllAutoSelections: 0
 --- !u!4 &545976841
 Transform:
@@ -1944,6 +1948,55 @@ MonoBehaviour:
   indentLevel: 0
   soundClip: {fileID: 8300000, guid: 0c202135ab7fd41fd87c7928b788e9cc, type: 3}
   volume: 1
+  waitUntilFinished: 0
+--- !u!114 &545976868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 545976837}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00d03ae0919f04264b018681ed534177, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 30
+  indentLevel: 0
+  _sceneName:
+    stringRef: {fileID: 0}
+    stringVal: tmp
+  loadingImage: {fileID: 0}
+  sceneNameOLD: 
+--- !u!114 &545976869
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 545976837}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ac5ce55bc698fa4290939ef6e426501, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 29
+  indentLevel: 0
+  display: 1
+  stage: {fileID: 0}
+  character: {fileID: 1627149017}
+  replacedCharacter: {fileID: 0}
+  portrait: {fileID: 21300000, guid: 32f2eb4d5d77e451ab328fb91c95c6e7, type: 3}
+  offset: 0
+  fromPosition: {fileID: 0}
+  toPosition: {fileID: 636968659}
+  facing: 0
+  useDefaultSettings: 1
+  fadeDuration: 0.5
+  moveDuration: 1
+  shiftOffset: {x: 0, y: 0}
+  move: 0
+  shiftIntoPlace: 0
   waitUntilFinished: 0
 --- !u!1 &636968658
 GameObject:
