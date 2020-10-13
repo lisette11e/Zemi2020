@@ -48,7 +48,7 @@ public class MediumEnemyBulletControll : MonoBehaviour {
     void OnTriggerEnter2D (Collider2D col) {
         if (col.gameObject.name == "stMychara") {
             if (PlayerManager.Instance.isYuhAbilityTriggered == true && isTrigger == false) {
-                isTrigger = true; 
+                isTrigger = true;
             } else {
                 PlayerManager.Instance.DecreaseHp (50);
                 //コンボリセット

@@ -46,12 +46,13 @@ public class St1Boss : MonoBehaviour {
         Vector2 dir = p1 - p2;
         float d = dir.magnitude;
         float r1 = 0.2f;
-        float r2 = 0.4f; 
+        float r2 = 0.4f;
         int looptime;
         int loopcnt = 0;
         float shotInterval = 0.5f;
         int addradian = 0;
         //shot回数決定
+        looptime = Random.Range (1, 5);
         if (d < r1 + r2) {
             //監督スクリプトにhpをへらしてもらう
             PlayerManager.Instance.DecreaseHp (St1BossAttack);
@@ -65,18 +66,18 @@ public class St1Boss : MonoBehaviour {
         if (GameDirector.Instance.CurrentPhase == 3) {
             currentTime += Time.deltaTime;
             if (targetTime < currentTime) {
-                looptime = Random.Range(1,5);
+                looptime = Random.Range (1, 5);
                 deg = 0;
                 isMake = false;
-                while(looptime == loopcnt){
-                    while(shotInterval < 0){
+                while (looptime == loopcnt) {
+                    while (shotInterval < 0) {
                         shotInterval -= Time.deltaTime;
                     }
-                    addradian += 360/looptime;
+                    addradian += 360 / looptime;
                     shotBullet (addradian);
                     shotInterval = 0.5f;
                 }
-            addradian = 0;
+                addradian = 0;
             }
         }
         if (toNextScene == true) {
@@ -118,7 +119,7 @@ public class St1Boss : MonoBehaviour {
         }
     }
 
-    public void shotSpattack(){
+    public void shotSpattack () {
 
     }
 }

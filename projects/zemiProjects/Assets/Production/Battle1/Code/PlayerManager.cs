@@ -38,10 +38,9 @@ public class PlayerManager : SingletonMonoBehaviour<PlayerManager> {
     public Sprite GaugeRed;
 
     // Start is called before the first frame update
-    void Start()
-    {
+    void Start () {
         //カットインコンポーネント取得
-        this.anim = GetComponent<Animator>();
+        this.anim = GetComponent<Animator> ();
         //リリア
         LiliaHp = 500;
         LiliaLv = 1;
@@ -101,20 +100,19 @@ public class PlayerManager : SingletonMonoBehaviour<PlayerManager> {
                     PlayerManager.Instance.CurrentPlayerHp = PlayerManager.Instance.LiliaHp / 2;
                     PlayerManager.Instance.StandbyPlayerHp = PlayerManager.Instance.YuhHp / 2;
                     //カットイン処理
-                    anim.SetTrigger("Space");
-                }
-                else
-                {
+                    anim.SetTrigger ("Space");
+                } else {
                     PlayerManager.Instance.CurrentPlayerHp = PlayerManager.Instance.LiliaHp / 2;
                     PlayerManager.Instance.StandbyPlayerHp = PlayerManager.Instance.YuhHp / 2;
                     //カットイン処理
-                    anim.SetTrigger("Space");
+                    anim.SetTrigger ("Space");
                 }
 
             }
         } else {
             //ゲームオーバー
-           FadeManager.Instance.LoadScene(gameover2,2.0f) SoundManager.Instance.PlaySeByName("Hidan_Player");
+            FadeManager.Instance.LoadScene ("gameover2", 2.0f);
+            SoundManager.Instance.PlaySeByName ("Hidan_Player");
         }
         redrawHpgauge ();
     }
@@ -143,7 +141,7 @@ public class PlayerManager : SingletonMonoBehaviour<PlayerManager> {
             GaugeImage.sprite = GaugeYellow;
         } else {
             GaugeImage.sprite = GaugeRed;
-            SoundManager.Instance.PlaySeByName("HPalert");
+            SoundManager.Instance.PlaySeByName ("HPalert");
         }
     }
 }

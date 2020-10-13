@@ -16,7 +16,7 @@ public class SmallEnemyGen : MonoBehaviour {
     }
 
     void EnemyGen () {
-        if (GameDirector.Instance.CurrentPhase == 1 || GameDirector.Instance.CurrentPhase == 3) {
+        if (GameDirector.Instance.CurrentPhase == 1 || GameDirector.Instance.CurrentPhase == 4) {
             // カウンタ
             timer -= Time.deltaTime;
             if (timer < 0) {
