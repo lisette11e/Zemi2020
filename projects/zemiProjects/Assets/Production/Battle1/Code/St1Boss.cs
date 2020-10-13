@@ -49,7 +49,7 @@ public class St1Boss : MonoBehaviour {
         float r2 = 0.4f;
         int looptime;
         int loopcnt = 0;
-        float shotInterval = 0.5f;
+        float shotInterval = 0.25f;
         int addradian = 0;
         //shot回数決定
         looptime = Random.Range (1, 5);
@@ -63,31 +63,24 @@ public class St1Boss : MonoBehaviour {
             //マイキャラと衝突したら弾を消す
             Destroy (gameObject);
         }
-        if (GameDirector.Instance.CurrentPhase == 3) {
             currentTime += Time.deltaTime;
             if (targetTime < currentTime) {
                 looptime = Random.Range (1, 5);
+                Debug.Log(looptime);
                 deg = 0;
                 isMake = false;
-                while (looptime == loopcnt) {
+                while (looptime != loopcnt) {
                     while (shotInterval < 0) {
                         shotInterval -= Time.deltaTime;
                     }
                     addradian += 360 / looptime;
                     shotBullet (addradian);
                     shotInterval = 0.5f;
+                    loopcnt++;
                 }
                 addradian = 0;
-            }
+                currentTime = 0.0f;
         }
-        if (toNextScene == true) {
-            while (TransitionStandBy == 0.0f) {
-                TransitionStandBy -= Time.deltaTime;
-            }
-            toNextScene = false;
-            FadeManager.Instance.LoadScene ("St1ED", 2.0f);
-        }
-
     }
 
     //被弾処理
@@ -104,7 +97,8 @@ public class St1Boss : MonoBehaviour {
             int add = (int) scrtmp;
             ScoreManager.Instance.AddScore (add);
             GameDirector.Instance.shotLv++;
-            toNextScene = true;
+            FadeManager.Instance.LoadScene ("St1ed", 2.0f);
+            SoundManager.Instance.PlaySeByName ("BOSS_Gekiha");
         }
     }
 

@@ -68,13 +68,6 @@ public class MediumEnemyManager : MonoBehaviour {
         if (Input.GetMouseButtonDown (0)) {
             anim.Play ();
         }
-        if (toNextScene == true) {
-            while (TransitionStandBy == 0.0f) {
-                TransitionStandBy -= Time.deltaTime;
-            }
-            toNextScene = false;
-            FadeManager.Instance.LoadScene ("St1Boss", 2.0f);
-        }
     }
 
     //被弾処理
@@ -91,8 +84,9 @@ public class MediumEnemyManager : MonoBehaviour {
             int add = (int) scrtmp;
             ScoreManager.Instance.AddScore (add);
             GameDirector.Instance.shotLv++;
-            toNextScene = true;
+            FadeManager.Instance.LoadScene ("St1Boss", 3.0f);
             SoundManager.Instance.PlaySeByName ("BOSS_Gekiha");
+            GameDirector.Instance.TransitionPhase();
         }
     }
 

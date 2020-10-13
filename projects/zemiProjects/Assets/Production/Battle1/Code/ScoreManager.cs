@@ -17,8 +17,8 @@ public class ScoreManager : SingletonMonoBehaviour<ScoreManager> {
   GameObject ComboObject;
   GameObject ComboDisp;
 
-  int CurrentScore = 0;
-  public int CurrentCombo = 0;
+  int CurrentScore;
+  public int CurrentCombo;
 
   void Start () {
     this.ScoreObject = GameObject.Find ("ScoreDisp");

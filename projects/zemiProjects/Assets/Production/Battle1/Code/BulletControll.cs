@@ -36,8 +36,9 @@ public class BulletControll : MonoBehaviour {
                     Destroy (gameObject);
                     targetEnemy.GetComponent<SmallEnemyManager> ().DecreaseHp ();
                     break;
-                case "BigEnemyMob":
+                case "BigEnemy":
                     Destroy (gameObject);
+                    targetEnemy.GetComponent<St1Boss>().DecreaseHp();
                     break;
                 case "MediumEnemy":
                     Destroy (gameObject);

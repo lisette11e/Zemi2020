@@ -25,9 +25,9 @@ public class GameDirector : SingletonMonoBehaviour<GameDirector> {
     public float SPstandbyTimer = 0.0f;
     public bool ToSpecialAttack = false;
     public float bgspeed = -0.05f;
-    public int CurrentPhase = 1;
+    public int CurrentPhase;
     public int EnemyMobSmallDestroyCount = 0;
-    public int shotLv = 1;
+    public int shotLv;
     public bool enemyGen = false;
     public bool toDisplayBossArea = false;
 
@@ -62,6 +62,8 @@ public class GameDirector : SingletonMonoBehaviour<GameDirector> {
 
         //HPゲージ初期化
         this.hpGauge = GameObject.Find ("hpGauge");
+        shotLv = 1;
+        CurrentPhase = 1;
 
     }
     void Update () {
@@ -76,7 +78,7 @@ public class GameDirector : SingletonMonoBehaviour<GameDirector> {
         }
         enemyGen = true;
 
-        if (CurrentPhase == 3 && toDisplayBossArea == true) {
+        if (toDisplayBossArea == true) {
             Instantiate (St1Boss, new Vector3 (0.0f, 3.0f, 0.0f), Quaternion.identity);
         }
 

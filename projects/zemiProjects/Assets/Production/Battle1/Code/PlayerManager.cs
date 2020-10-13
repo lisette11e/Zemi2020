@@ -121,7 +121,7 @@ public class PlayerManager : SingletonMonoBehaviour<PlayerManager> {
                     AutoHealCount++;
                 } else {
                     //ゲームオーバー
-                    FadeManager.Instance.LoadScene ("gameover2", 2.0f);
+                    FadeManager.Instance.LoadScene ("GameOver", 2.0f);
                 }
             } else {
                 if (!PlayerManager.Instance.ToChange) {
