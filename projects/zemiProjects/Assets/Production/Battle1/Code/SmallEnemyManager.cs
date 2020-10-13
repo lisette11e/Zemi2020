@@ -61,6 +61,7 @@ public class SmallEnemyManager : MonoBehaviour {
             GameDirector.Instance.EnemyMobSmallDestroyCount++;
             double scrtmp = 1000 * (Combo + 1) * 0.01;
             int add = (int) scrtmp;
+            SoundManager.Instance.PlaySeByName("Gekiha_Zako");
         }
     }
     //必殺モード発動時用
