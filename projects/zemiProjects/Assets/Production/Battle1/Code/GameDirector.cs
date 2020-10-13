@@ -30,11 +30,13 @@ public class GameDirector : SingletonMonoBehaviour<GameDirector>
     public int EnemyMobSmallDestroyCount = 0;
     public int shotLv = 1;
     public bool enemyGen = false;
+    public bool toDisplayBossArea = false;
 
     public float StartStandby = 0.0f; //ゲームスタートまでの時間
 
     GameObject hpGauge;
     public GameObject MediumEnemyPrefab;
+    public GameObject St1Boss;
     void Start()
     {
 
@@ -80,6 +82,10 @@ public class GameDirector : SingletonMonoBehaviour<GameDirector>
         }
         enemyGen = true;
 
+        if(CurrentPhase == 3 && toDisplayBossArea == true){
+            Instantiate(St1Boss, new Vector3(0.0f, 3.0f, 0.0f), Quaternion.identity);
+        }
+
     }
 
     //スペシャルムーブ発動
@@ -111,16 +117,6 @@ public class GameDirector : SingletonMonoBehaviour<GameDirector>
             SPstandbyTimer += Time.deltaTime;
         }
     }
-
-    //フェーズ移行
-    public void TransitionPhase()
-    {
-        CurrentPhase++;
-        if (CurrentPhase == 2)
-        {
-            Instantiate(MediumEnemyPrefab, new Vector3(0.0f, 3.0f, 0.0f), Quaternion.identity);
-        }
-    }
     //フェーズ移行
     public void TransitionPhase()
     {
@@ -133,7 +129,7 @@ public class GameDirector : SingletonMonoBehaviour<GameDirector>
     
     void gameStart()
     {
-         Animation anim;
+     Animation anim;
      anim = this.gameObject.GetComponent<Animation> ();
      anim.Play ();
 
