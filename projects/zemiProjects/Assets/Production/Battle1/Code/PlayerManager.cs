@@ -109,8 +109,6 @@ public class PlayerManager : SingletonMonoBehaviour<PlayerManager>
                 {
                     PlayerManager.Instance.CurrentPlayerHp = PlayerManager.Instance.LiliaHp / 2;
                     PlayerManager.Instance.StandbyPlayerHp = PlayerManager.Instance.YuhHp / 2;
-                    //カットイン
-                    anim.Play();
                 }
                 else
                 {

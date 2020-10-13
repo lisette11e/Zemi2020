@@ -19,8 +19,6 @@ public class HealAbility : MonoBehaviour
             else
             {
                 PlayerManager.Instance.CurrentPlayerHp += PlayerManager.Instance.YuhHp / 2;
-                //カットイン
-                anim.Play();
             }
             //被弾処理のコードを使ってHPバーリセット
             Debug.Log(PlayerManager.Instance.CurrentPlayerHp);
