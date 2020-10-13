@@ -66,8 +66,8 @@ public class GameDirector : SingletonMonoBehaviour<GameDirector> {
     }
     void Update () {
         if (EnemyMobSmallDestroyCount >= 50) {
-            EnemyMobSmallDestroyCount = 0;
             TransitionPhase ();
+            EnemyMobSmallDestroyCount = 0;
         }
 
         //ゲーム開始時に3秒スタンバイ（アニメーション用）
