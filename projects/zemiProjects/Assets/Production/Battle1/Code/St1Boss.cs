@@ -6,9 +6,9 @@ public class St1Boss : MonoBehaviour {
     float fallspd; //落ちてくる速度を設定する子
 
     //敵ステータス宣言
-    public int St1BossHp = 1000;
-    public int St1BossAttack = 100;
-    public int St1BossEigenvalue = 5000;
+    public int St1BossHp = 10000;
+    public int St1BossAttack = 200;
+    public int St1BossEigenvalue = 15000;
 
     //必要なゲームオブジェクトの定義
     public GameObject EnemyBullet;
@@ -24,6 +24,7 @@ public class St1Boss : MonoBehaviour {
     public bool isMake = false;
     public bool toNextScene = false;
     public List<MediumEnemyBulletControll> list = new List<MediumEnemyBulletControll> ();
+    public bool runShotBullet = false;
 
     //クリア時アニメーションの変数の定義
     TypefaceAnimator anim;
@@ -45,7 +46,12 @@ public class St1Boss : MonoBehaviour {
         Vector2 dir = p1 - p2;
         float d = dir.magnitude;
         float r1 = 0.2f;
-        float r2 = 0.4f;
+        float r2 = 0.4f; 
+        int looptime;
+        int loopcnt = 0;
+        float shotInterval = 0.5f;
+        int addradian = 0;
+        //shot回数決定
         if (d < r1 + r2) {
             //監督スクリプトにhpをへらしてもらう
             PlayerManager.Instance.DecreaseHp (St1BossAttack);
@@ -56,21 +62,31 @@ public class St1Boss : MonoBehaviour {
             //マイキャラと衝突したら弾を消す
             Destroy (gameObject);
         }
-        if (GameDirector.Instance.CurrentPhase == 2) {
+        if (GameDirector.Instance.CurrentPhase == 3) {
             currentTime += Time.deltaTime;
             if (targetTime < currentTime) {
+                looptime = Random.Range(1,5);
                 deg = 0;
                 isMake = false;
-                shotBullet ();
-            };
+                while(looptime == loopcnt){
+                    while(shotInterval < 0){
+                        shotInterval -= Time.deltaTime;
+                    }
+                    addradian += 360/looptime;
+                    shotBullet (addradian);
+                    shotInterval = 0.5f;
+                }
+            addradian = 0;
+            }
         }
         if (toNextScene == true) {
             while (TransitionStandBy == 0.0f) {
                 TransitionStandBy -= Time.deltaTime;
             }
             toNextScene = false;
-            FadeManager.Instance.LoadScene ("St1Boss", 2.0f);
+            FadeManager.Instance.LoadScene ("St1ED", 2.0f);
         }
+
     }
 
     //被弾処理
@@ -83,7 +99,7 @@ public class St1Boss : MonoBehaviour {
             GameDirector.Instance.enemyGen = false;
             Destroy (gameObject);
             Instantiate (explosionPrefab, transform.position, Quaternion.identity);
-            double scrtmp = 5000 * (Combo + 1) * 0.01;
+            double scrtmp = St1BossEigenvalue * (Combo + 1) * 0.01;
             int add = (int) scrtmp;
             ScoreManager.Instance.AddScore (add);
             GameDirector.Instance.shotLv++;
@@ -91,11 +107,11 @@ public class St1Boss : MonoBehaviour {
         }
     }
 
-    public void shotBullet () {
+    public void shotBullet (int addradian) {
         float hankei = 2f; //弾オブジェクトを配置する円の半径
         float BulletInterval = 30f; //弾を生成する角度
         currentTime = 0;　 //タイマーを初期化
-        while (deg <= 360 - BulletInterval) {
+        while (deg <= 360 - BulletInterval + addradian) {
             GameObject clone = (GameObject) Instantiate (EnemyBullet, transform.position, Quaternion.identity);
             clone.GetComponent<MediumEnemyBulletControll> ().SetVelocity ((clone.GetComponent<MediumEnemyBulletControll> ().VelocitySetting (deg, 3) / 300));
             deg += BulletInterval;

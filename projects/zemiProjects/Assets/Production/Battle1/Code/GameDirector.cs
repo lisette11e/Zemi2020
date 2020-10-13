@@ -82,7 +82,7 @@ public class GameDirector : SingletonMonoBehaviour<GameDirector>
         }
         enemyGen = true;
 
-        if(CurrentPhase == 3 && toDisplayBossArea == false){
+        if(CurrentPhase == 3 && toDisplayBossArea == true){
             Instantiate(St1Boss, new Vector3(0.0f, 3.0f, 0.0f), Quaternion.identity);
         }
 
