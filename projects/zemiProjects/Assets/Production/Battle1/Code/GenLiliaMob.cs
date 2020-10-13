@@ -16,6 +16,7 @@ public class GenLiliaMob : MonoBehaviour {
       if(PlayerManager.Instance.LiliaAbilityCount <= 2){
         Instantiate (LiliaSpMob, new Vector3 (pos.x + 1.0f, pos.y, 0.0f), Quaternion.identity);
         Instantiate (LiliaSpMob, new Vector3 (pos.x - 1.0f, pos.y, 0.0f), Quaternion.identity);
+        SoundManager.Instance.PlaySeByName("必殺技orスキル発動３");
       }
     }
 }
