@@ -94,6 +94,7 @@ public class PlayerManager : SingletonMonoBehaviour<PlayerManager>
     {
         //カットイン変数の定義
         Animator anim = null;
+        
         //被弾時にコンボ値を変更できるようにする
         CurrentPlayerHp -= enemyattack;
         if(GameDirector.Instance.ToSpecialAttack == true){
