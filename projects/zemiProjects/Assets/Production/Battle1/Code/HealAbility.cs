@@ -4,22 +4,26 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class HealAbility : MonoBehaviour
-{    
+{
+    //カットイン変数の定義
+    private Animator anim;
     public void Onclick(){
-        //カットイン変数の定義
-        Animator anim = null;
+        //カットインコンポーネント取得
+        this.anim = GetComponent<Animator>();
         Debug.Log(PlayerManager.Instance.CurrentPlayerHp);
         if (PlayerManager.Instance.ManualHealCount <= 2)
         {
             if (PlayerManager.Instance.ToChange == false)
             {
                 PlayerManager.Instance.CurrentPlayerHp += PlayerManager.Instance.LiliaHp / 2;
-                //カットイン
-                anim.SetBool("Cut In",true);
+                //カットイン処理
+                anim.SetTrigger("Space");
             }
             else
             {
                 PlayerManager.Instance.CurrentPlayerHp += PlayerManager.Instance.YuhHp / 2;
+                //カットイン処理
+                anim.SetTrigger("Space");
             }
             //被弾処理のコードを使ってHPバーリセット
             Debug.Log(PlayerManager.Instance.CurrentPlayerHp);

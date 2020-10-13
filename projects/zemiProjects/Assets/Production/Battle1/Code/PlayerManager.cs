@@ -32,18 +32,14 @@ public class PlayerManager : SingletonMonoBehaviour<PlayerManager>
     public bool ToChange = false;
     public bool isYuhAbilityTriggered = false;
     //カットイン変数の定義
-    private Animator anim = null;
+    private Animator anim;
     GameObject hpGauge;
 
     // Start is called before the first frame update
     void Start()
     {
-        //カットインアニメ試し
-        GameObject image_object
-            = GameObject.Find("Image");
-        anim = GetComponent<Animator>();
-        anim.SetBool("Cut In",true);
-        anim.SetBool("Cut In", false);
+        //カットインコンポーネント取得
+        this.anim = GetComponent<Animator>();
         //リリア
         LiliaHp = 500;
         LiliaLv = 1;
@@ -92,9 +88,6 @@ public class PlayerManager : SingletonMonoBehaviour<PlayerManager>
     //被弾処理
     public void DecreaseHp(int enemyattack)
     {
-        //カットイン変数の定義
-        Animator anim = null;
-        
         //被弾時にコンボ値を変更できるようにする
         CurrentPlayerHp -= enemyattack;
         if(GameDirector.Instance.ToSpecialAttack == true){
@@ -110,11 +103,15 @@ public class PlayerManager : SingletonMonoBehaviour<PlayerManager>
                 {
                     PlayerManager.Instance.CurrentPlayerHp = PlayerManager.Instance.LiliaHp / 2;
                     PlayerManager.Instance.StandbyPlayerHp = PlayerManager.Instance.YuhHp / 2;
+                    //カットイン処理
+                    anim.SetTrigger("Space");
                 }
                 else
                 {
                     PlayerManager.Instance.CurrentPlayerHp = PlayerManager.Instance.LiliaHp / 2;
                     PlayerManager.Instance.StandbyPlayerHp = PlayerManager.Instance.YuhHp / 2;
+                    //カットイン処理
+                    anim.SetTrigger("Space");
                 }
 
             }
