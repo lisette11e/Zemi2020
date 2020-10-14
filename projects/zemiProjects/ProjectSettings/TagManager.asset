@@ -6,6 +6,10 @@ TagManager:
   tags:
   - MediumEnemy
   - SmallEnemyMob
+  - ScoreManager
+  - GameDirector
+  - PlayerManager
+  - BigEnemy
   layers:
   - Default
   - TransparentFX

@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerManager : SingletonMonoBehaviour<PlayerManager>
-{
+public class PlayerManager : SingletonMonoBehaviour<PlayerManager> {
 
     //各種ステータス宣言
     public int AutoHealCount = 0;
@@ -31,11 +30,24 @@ public class PlayerManager : SingletonMonoBehaviour<PlayerManager>
     public int YuhAbilityCount;
     public bool ToChange = false;
     public bool isYuhAbilityTriggered = false;
+    //カットイン変数の定義
+    private Animator anim;
     GameObject hpGauge;
+    public Sprite GaugeGreen;
+    public Sprite GaugeYellow;
+    public Sprite GaugeRed;
+    public Sprite spriteMae;
+    public Sprite spriteAto;
+    public Sprite btnBefore;
+    public Sprite btnAfter;
+    private bool chFlg = false;
+    private GameObject chara;
+    private GameObject changebutton;
 
     // Start is called before the first frame update
-    void Start()
-    {
+    void Start () {
+        //カットインコンポーネント取得
+        this.anim = GetComponent<Animator> ();
         //リリア
         LiliaHp = 500;
         LiliaLv = 1;
@@ -58,12 +70,13 @@ public class PlayerManager : SingletonMonoBehaviour<PlayerManager>
         StandbyPlayerabilitycount = YuhAbilityCount;
 
         //HPゲージ初期化
-        this.hpGauge = GameObject.Find("hpGauge");
+        this.hpGauge = GameObject.Find ("hpGauge");
+        chara = GameObject.Find ("stMychara");
+        changebutton = GameObject.Find ("chrChange");
 
     }
     //プレイヤー入れ替え
-    public void PlayerSwap()
-    {
+    public void PlayerSwap () {
         SwapHp = CurrentPlayerHp;
         SwapLv = CurrentPlayerLv;
         SwapAttack = CurrentPlayerAttack;
@@ -79,55 +92,78 @@ public class PlayerManager : SingletonMonoBehaviour<PlayerManager>
         StandbyPlayerAttack = SwapAttack;
         StandbyPlayerabilitycount = Swapabilitycount;
 
-        DecreaseHp(0);
+        redrawHpgauge ();
     }
     //被弾処理
-    public void DecreaseHp(int enemyattack)
-    {
+    public void DecreaseHp (int enemyattack) {
         //被弾時にコンボ値を変更できるようにする
+        CurrentPlayerHp -= enemyattack;
+        SoundManager.Instance.PlaySeByName ("Hidan_Player");
+        if (GameDirector.Instance.ToSpecialAttack == true) {
+            GameDirector.Instance.ToSpecialAttack = false;
+        }
+        Debug.Log (CurrentPlayerHp);
+        if (CurrentPlayerHp <= 0) {
+            if (StandbyPlayerHp <= 0) {
+                if (AutoHealCount < 1) {
+                    //自動回復発動
+                    if (PlayerManager.Instance.ToChange == false) {
+                        PlayerManager.Instance.CurrentPlayerHp = PlayerManager.Instance.LiliaHp / 2;
+                        PlayerManager.Instance.StandbyPlayerHp = PlayerManager.Instance.YuhHp / 2;
+                        //カットイン処理
+                        anim.SetTrigger ("Space");
+                    } else {
+                        PlayerManager.Instance.CurrentPlayerHp = PlayerManager.Instance.LiliaHp / 2;
+                        PlayerManager.Instance.StandbyPlayerHp = PlayerManager.Instance.YuhHp / 2;
+                        //カットイン処理
+                        anim.SetTrigger ("Space");
+                    }
+                    AutoHealCount++;
+                } else {
+                    //ゲームオーバー
+                    FadeManager.Instance.LoadScene ("GameOver", 2.0f);
+                }
+            } else {
+                if (!PlayerManager.Instance.ToChange) {
+                    chara.GetComponent<SpriteRenderer> ().sprite = spriteAto;
+                    changebutton.GetComponent<Image> ().sprite = btnAfter;
+                    PlayerManager.Instance.ToChange = true;
+                } else {
+                    chara.GetComponent<SpriteRenderer> ().sprite = spriteMae;
+                    changebutton.GetComponent<Image> ().sprite = btnBefore;
+                    PlayerManager.Instance.ToChange = false;
+                }
+                PlayerSwap ();
+            }
+        }
+        redrawHpgauge ();
+    }
+
+    //HPゲージ再描画
+    public void redrawHpgauge () {
         float currentHp = 0.0f;
         float MaxHp = 0.0f;
         float hpGaugeFill = 0.0f;
-        CurrentPlayerHp -= enemyattack;
-        currentHp = (float)CurrentPlayerHp;
-        if (ToChange == false)
-        {
+        Image GaugeImage;
+        GaugeImage = this.hpGauge.GetComponent<Image> ();
+
+        currentHp = (float) CurrentPlayerHp;
+        if (ToChange == false) {
             MaxHp = LiliaHp;
-        }
-        else
-        {
+        } else {
             MaxHp = YuhHp;
         }
-
         hpGaugeFill = currentHp / MaxHp;
-        this.hpGauge.GetComponent<Image>().fillAmount = hpGaugeFill;
+        Debug.Log (hpGaugeFill);
+        GaugeImage.fillAmount = hpGaugeFill;
 
-        if(GameDirector.Instance.ToSpecialAttack == true){
-            GameDirector.Instance.ToSpecialAttack = false;
-        }
-
-        if (CurrentPlayerHp < 0 && StandbyPlayerHp < 0)
-        {
-            if (AutoHealCount < 0)
-            {
-                //自動回復発動
-                if (PlayerManager.Instance.ToChange == false)
-                {
-                    PlayerManager.Instance.CurrentPlayerHp = PlayerManager.Instance.LiliaHp / 2;
-                    PlayerManager.Instance.StandbyPlayerHp = PlayerManager.Instance.YuhHp / 2;
-                }
-                else
-                {
-                    PlayerManager.Instance.CurrentPlayerHp = PlayerManager.Instance.LiliaHp / 2;
-                    PlayerManager.Instance.StandbyPlayerHp = PlayerManager.Instance.YuhHp / 2;
-                }
-                //被弾処理のコードを使ってHPバーリセット
-                PlayerManager.Instance.DecreaseHp(0);
-            }
-        }
-        else
-        {
-            //ゲームオーバー
+        if (hpGaugeFill >= 0.5f) {
+            GaugeImage.sprite = GaugeGreen;
+        } else if (hpGaugeFill >= 0.25f) {
+            GaugeImage.sprite = GaugeYellow;
+        } else {
+            GaugeImage.sprite = GaugeRed;
+            SoundManager.Instance.PlaySeByName ("HPalert");
         }
     }
 }

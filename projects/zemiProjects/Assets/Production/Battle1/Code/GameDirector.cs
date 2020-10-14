@@ -18,25 +18,25 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GameDirector : SingletonMonoBehaviour<GameDirector>
-{
+public class GameDirector : SingletonMonoBehaviour<GameDirector> {
 
     //各種ステータス宣言
     public float SPmoveTimer = 0.0f;
     public float SPstandbyTimer = 0.0f;
     public bool ToSpecialAttack = false;
     public float bgspeed = -0.05f;
-    public int CurrentPhase = 1;
+    public int CurrentPhase;
     public int EnemyMobSmallDestroyCount = 0;
-    public int shotLv = 1;
+    public int shotLv;
     public bool enemyGen = false;
+    public bool toDisplayBossArea = false;
 
     public float StartStandby = 0.0f; //ゲームスタートまでの時間
 
     GameObject hpGauge;
     public GameObject MediumEnemyPrefab;
-    void Start()
-    {
+    public GameObject St1Boss;
+    void Start () {
 
         /* 仮置です
         //敵・ざこいの（小）
@@ -61,60 +61,69 @@ public class GameDirector : SingletonMonoBehaviour<GameDirector>
         */
 
         //HPゲージ初期化
-        this.hpGauge = GameObject.Find("hpGauge");
-
-        gameStart();
+        this.hpGauge = GameObject.Find ("hpGauge");
+        shotLv = 1;
+        CurrentPhase = 1;
 
     }
-    void Update()
-    {
-        if (EnemyMobSmallDestroyCount >= 1)
-        {
+    void Update () {
+        if (EnemyMobSmallDestroyCount >= 50) {
+            TransitionPhase ();
             EnemyMobSmallDestroyCount = 0;
-            TransitionPhase();
         }
+
+        //ゲーム開始時に3秒スタンバイ（アニメーション用）
+        while (StartStandby == 3.0f) {
+            StartStandby += Time.deltaTime;
+        }
+        enemyGen = true;
+
+        if (toDisplayBossArea == true) {
+            Instantiate (St1Boss, new Vector3 (0.0f, 3.0f, 0.0f), Quaternion.identity);
+        }
+
     }
 
     //スペシャルムーブ発動
-    public void runSpecialMove()
-    {
+    public void runSpecialMove () {
+        Animation anim;
+        anim = this.gameObject.GetComponent<Animation> ();
+        anim.Play ();
+
         //フラグスタンバイ
         ToSpecialAttack = true;
 
         //=====モブ敵を全部ぶちのめす=====
-        GameObject[] mobs = GameObject.FindGameObjectsWithTag("SmallEnemyMob");
-        foreach (GameObject mob in mobs)
-        {
-            mob.GetComponent<SmallEnemyManager>().SpecialMoveDestroy();
+        GameObject[] mobs = GameObject.FindGameObjectsWithTag ("SmallEnemyMob");
+        foreach (GameObject mob in mobs) {
+            mob.GetComponent<SmallEnemyManager> ().SpecialMoveDestroy ();
         }
 
         //10秒タイマー始動
-        while (SPmoveTimer == 10.0f)
-        {
+        while (SPmoveTimer > 10.0f) {
             SPstandbyTimer += Time.deltaTime;
         }
         ToSpecialAttack = false;
         //スタンバイ
-        while (SPstandbyTimer == 10.0f)
-        {
+        while (SPstandbyTimer > 10.0f) {
             SPstandbyTimer += Time.deltaTime;
         }
     }
-
-    public void TransitionPhase()
-    {
+    //フェーズ移行
+    public void TransitionPhase () {
         CurrentPhase++;
-        if (CurrentPhase == 2)
-        {
-            Instantiate(MediumEnemyPrefab, new Vector3(0.0f, 3.0f, 0.0f), Quaternion.identity);
+        if (CurrentPhase == 2) {
+            Instantiate (MediumEnemyPrefab, new Vector3 (0.0f, 3.0f, 0.0f), Quaternion.identity);
         }
     }
 
-    void gameStart()
-    {
+    void gameStart () {
+        Animation anim;
+        anim = this.gameObject.GetComponent<Animation> ();
+        anim.Play ();
+
         //タイマー始動
-        while (StartStandby == 3.0f)
-        {
+        while (StartStandby == 3.0f) {
             StartStandby += Time.deltaTime;
         }
         enemyGen = true;

@@ -4,5 +4,35 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Title.unity
+    guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Production/Story/Prologue.unity
+    guid: 508e99da0349d403bb69d7ab5659385b
+  - enabled: 1
+    path: Assets/Production/Story/St1Boss.unity
+    guid: fb13f87973dcb431b9a4aefb01ce9ef4
+  - enabled: 1
+    path: Assets/Production/Story/St1ed.unity
+    guid: c26ca7796ee604678bbde48a707d12b5
+  - enabled: 1
+    path: Assets/Production/Story/St1op.unity
+    guid: b058c0b0556db464aa7e4b80a529c826
+  - enabled: 1
+    path: Assets/Production/Story/Story1.unity
+    guid: 3aa95563cfd304e789e178cb704f8e79
+  - enabled: 1
+    path: Assets/GameOver.unity
+    guid: 2175936de2c7e4da7b1bdac8d8188388
+  - enabled: 1
+    path: Assets/Scenes/shootingMain.unity
+    guid: 3e913a41e6222458cb968d58c9ed07e0
+  - enabled: 1
+    path: Assets/Scenes/tmp.unity
+    guid: a55b9ce80319547948707a8a5903a221
+  - enabled: 1
+    path: Assets/Scenes/St1Boss.unity
+    guid: b6eca598ec649064fa757ca65f07b5f9
   m_configObjects: {}

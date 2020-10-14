@@ -6,23 +6,20 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class YuSpmove : MonoBehaviour {
-    public float targettime; //モブが生きている時間
-    // Start is called before the first frame update
-    void Start () {
-        if (PlayerManager.Instance.ToChange == true) {
-            targettime = 10.0f;
-            flagOperation ();
-        }
-    }
+  float yuskilltimer;
+  void Update () {
+    if (PlayerManager.Instance.isYuhAbilityTriggered == true) {
+      yuskilltimer += Time.deltaTime;
+      if (yuskilltimer > 10.0f) {
+        PlayerManager.Instance.isYuhAbilityTriggered = false;
+      }
 
-    // Update is called once per frame
-    void Update () {
-        targettime -= Time.deltaTime;
-        if (targettime < 0.0f) {
-            PlayerManager.Instance.isYuhAbilityTriggered = false;
-        }
     }
-    void flagOperation () {
-        PlayerManager.Instance.isYuhAbilityTriggered = true;
+  }
+  public void Onclick () {
+    yuskilltimer = 0.0f;
+    if (PlayerManager.Instance.ToChange == true) {
+      PlayerManager.Instance.isYuhAbilityTriggered = true;
     }
+  }
 }
