@@ -157,8 +157,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0.78700006}
-  m_AnchoredPosition: {x: 0, y: -162.5}
-  m_SizeDelta: {x: -81, y: -765}
+  m_AnchoredPosition: {x: 4.999996, y: -170}
+  m_SizeDelta: {x: -80.99999, y: -770}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &60344673
 MonoBehaviour:
@@ -377,7 +377,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: aa878085700c047ec85b40aeb09391c4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 588563e054e184d21a9ead916e051141, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1091,7 +1091,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 18dc39caf824c4723ba6ace414d67aaf, type: 3}
+  m_Sprite: {fileID: 21300000, guid: bdcc5a7666202490d85a7a2a8a9b271b, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -1249,7 +1249,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 67
     y: 67
-    width: 111
+    width: 107.5
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -1297,8 +1297,7 @@ MonoBehaviour:
     height: 859
   selectedBlocks:
   - {fileID: 1696506425}
-  selectedCommands:
-  - {fileID: 1696506439}
+  selectedCommands: []
   variables: []
   description: 
   stepPause: 0
@@ -1597,7 +1596,7 @@ MonoBehaviour:
   durationOLD: 0
 --- !u!114 &1696506439
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
